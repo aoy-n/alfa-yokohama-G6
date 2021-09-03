@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>情報管理ツール</title>
+  <style>
+    #body {
+      margin: 1%;
+      border: 8px solid rgb(0, 0, 0);
+      text-align: center;
+      height: 40em;
+    }
+
+    header {
+      display: flex;
+    }
+
+    .menu {
+      flex: 1;
+      height: 1.5em;
+      padding-top: 0.2em;
+      margin-bottom: 0.5em;
+      color: rgb(0, 0, 0);
+      border: 0.1em solid rgb(30, 163, 180);
+      font-size: 2em;
+      font-weight: bold;
+      font-family: serif;
+      overflow: scroll;
+      text-align: center;
+
+      transition: 0.2s;
+    }
+
+    .menu:hover {
+      color: #ff0000;
+    }
+
+    .button {
+      display: inline-block;
+      border-radius: 12%;
+      font-size: 1.5em;
+      text-align: center;
+      cursor: pointer;
+      padding: 0.25em 0.5em;
+      background-color: #c70000;
+      color: #ffffff;
+      line-height: 1em;
+      transition: .3s;
+      box-shadow: 2px 2px 1px #666666;
+      border: 2px solid #990000;
+    }
+
+    .button:hover {
+      box-shadow: none;
+      color: #c70000;
+      background-color: #ffffff;
+    }
+
+    .content {
+      background-color: #d4d4d4;
+      height: 100%;
+    }
+
+    #mailList,
+    #mail {
+      height: 100%;
+      margin: auto;
+      padding: 0.5em;
+      color: rgb(0, 0, 0);
+      background-color: #ffffff;
+      font-family: serif;
+      overflow: scroll;
+    }
+
+    #mailList {
+      flex: 1;
+      border-right: 5px solid rgb(0, 0, 0);
+    }
+
+    #mail {
+      flex: 2;
+    }
+
+    .mailTytle{
+      font-size: 30px;
+      height: 1.5em;
+      margin: 0.1em;
+      color: rgb(0, 0, 0);
+      border: 2px solid;
+      font-family: serif;
+      overflow: hidden;
+    }
+
+    .mailBody{
+      font-size: 20px;
+    }
+  </style>
+  <script>
+    "use strict;"
+
+    const sectionCnt = 3;
+    const mailAllCnt = 5;//暫定
+
+    function setStorage(key, value) {
+      var item = localStorage.setItem(key, value);
+      return localStorage;
+    }
+    function getStorage(key) {
+      var value = localStorage.getItem(key);
+      return value;
+    }
+    function deleteStorage(key) {
+      localStorage.removeItem(key);
+    }
+    function getParam(key) {
+      const params = new URL(window.location.href).searchParams;
+      return params.get(key)
+    }
+    function hide(id) { document.getElementById(id).setAttribute("hidden", true); }
+    function show(id) { document.getElementById(id).removeAttribute("hidden"); }
+    function next(n) { for (let i = 1; i <= sectionCnt; i++) { if (i == n) { show("section" + i) } else { hide("section" + i) }; } }
+
+    function nextMail(n) {
+      for (let i = 1; i <= mailAllCnt; i++) {
+        if (i == n) {
+          show("sectionMail" + i)
+        } else {
+          hide("sectionMail" + i)
+        };
+      }
+    }
+
+    function onlF() { next(0); nextMail(0) }
+    window.onload = onlF
+
+    function onclickFunction(func, elem) {
+      const targetId = elem.getAttribute("targetId");
+      const n = targetId.substr(-1);
+      const sec = document.getElementById(targetId);
+      if (sec.getAttribute("hidden")) { func(n) } else { func(0) };
+    }
+
+  </script>
+</head>
+
+<body>
+  <div>
+    <span style="font-size: 1em;font-weight: bold;">オンラインリアル脱出ゲーム『平安京からの脱出』</span>
+    <span style="font-size: 2em;font-weight: bold;">情報管理ツール</span>
+    <span style="float: right;"><button class="button" onclick="next(0);nextMail(0);">更新</button></span>
+  </div>
+  <div id="body">
+    <header style="height: 4em;">
+      <div class="menu" targetId=section1 style="background-color: #fbec99;" onclick=onclickFunction(next,this)>人物</div>
+      <div class="menu" targetId=section2 style="background-color: #c5fb99;" onclick=onclickFunction(next,this)>アイテム</div>
+      <div class="menu" targetId=section3 style="background-color: #99f4fb;" onclick=onclickFunction(next,this)>メール</div>
+      <!--<div class="menu" style="background-color: #99fbcd;">記録画像</div>-->
+      <!--<div class="menu" style="background-color: #fb99de;">メニュータブあああああああああああ</div>-->
+    </header>
+    <main style="height: 34.5em;">
+      <section class="content" id="section1">11111111</section>
+      <section class="content" id="section2">22222222</section>
+      <section class="content" id="section3">
+        <div style="display: flex;height: 100%;">
+          <section id="mailList">
+
+            <div class="mailTytle" id="mail1" targetId=sectionMail1 onclick=onclickFunction(nextMail,this)>メール1通目</div>
+            <div class="mailTytle" id="mail2" targetId=sectionMail2 onclick=onclickFunction(nextMail,this)>メール2通目</div>
+            <div class="mailTytle" id="mail3" targetId=sectionMail3 onclick=onclickFunction(nextMail,this)>メール3通目</div>
+            <div class="mailTytle" id="mail4" targetId=sectionMail4 onclick=onclickFunction(nextMail,this)>メール4通目</div>
+            <div class="mailTytle" id="mail5" targetId=sectionMail5 onclick=onclickFunction(nextMail,this)>メール5通目</div>
+            <div class="mailTytle" id="mail1" targetId=sectionMail1 onclick=onclickFunction(nextMail,this)>メール1通目</div>
+            <div class="mailTytle" id="mail2" targetId=sectionMail2 onclick=onclickFunction(nextMail,this)>メール2通目</div>
+            <div class="mailTytle" id="mail3" targetId=sectionMail3 onclick=onclickFunction(nextMail,this)>メール3通目</div>
+            <div class="mailTytle" id="mail4" targetId=sectionMail4 onclick=onclickFunction(nextMail,this)>メール4通目</div>
+            <div class="mailTytle" id="mail5" targetId=sectionMail5 onclick=onclickFunction(nextMail,this)>メール5通目</div>
+            <div class="mailTytle" id="mail1" targetId=sectionMail1 onclick=onclickFunction(nextMail,this)>メール1通目</div>
+            <div class="mailTytle" id="mail2" targetId=sectionMail2 onclick=onclickFunction(nextMail,this)>メール2通目</div>
+            <div class="mailTytle" id="mail3" targetId=sectionMail3 onclick=onclickFunction(nextMail,this)>メール3通目</div>
+            <div class="mailTytle" id="mail4" targetId=sectionMail4 onclick=onclickFunction(nextMail,this)>メール4通目</div>
+            <div class="mailTytle" id="mail5" targetId=sectionMail5 onclick=onclickFunction(nextMail,this)>メール5通目</div>
+
+          </section>
+          <section id="mail">
+
+            <section class="mailBody" id="sectionMail1">メール1</section>
+            <section class="mailBody" id="sectionMail2">メール2</section>
+            <section class="mailBody" id="sectionMail3">メール3</section>
+            <section class="mailBody" id="sectionMail4">メール4</section>
+            <section class="mailBody" id="sectionMail5">メール5</section>
+
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>
