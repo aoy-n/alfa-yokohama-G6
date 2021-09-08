@@ -66,6 +66,10 @@ const app = Vue.createApp({
 
 
 const vm = app.mount('body')
+function test(){
+  vm.closeTab("maket")
+}
+const hoge = "hogehoge"
 
 window.addEventListener('beforeunload', function (e) {
   e.returnValue = '';
