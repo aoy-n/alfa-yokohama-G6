@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+  <link rel="stylesheet"
+    href="https://images-fe.ssl-images-amazon.com/images/I/61g+ivtVz9L._RC|11Fd9tJOdtL.css,11tfezETfFL.css,31Q3id-QR0L.css,31U9HrBLKmL.css_.css?AUIClients/AmazonUI#jp.not-trident" />
+  <link rel="stylesheet"
+    href="https://images-fe.ssl-images-amazon.com/images/I/01SdjaY0ZsL._RC|31jdWD+JB+L.css,41DBI6BbFkL.css_.css?AUIClients/AuthenticationPortalAssets" />
+  <link rel="stylesheet" href="https://images-fe.ssl-images-amazon.com/images/I/11qeL1AgUGL.css?AUIClients/CVFAssets" />
+
+  <script>
+    "use strict"
+
+    const sectionCnt = 3;
+
+    function setStorage(key, value) {
+      var item = localStorage.setItem(key, value);
+      console.log("setStrage: " + key + " : " + value)
+      return localStorage;
+    }
+    function getStorage(key) {
+      var value = localStorage.getItem(key);
+      console.log("getStrage: " + key + " : " + value)
+      return value;
+    }
+    function deleteStorage(key) {
+      localStorage.removeItem(key);
+      console.log("delStrage: " + key + " : " + value)
+    }
+
+    function open() {
+      if (getStorage("ordered") == "true") {
+        next(3);
+      } else {
+        next(1);
+      }
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('main').style.display = 'block';
+    }
+    window.onload = open;
+
+    function hide(id) { document.getElementById(id).style.display = 'none'; };
+    function show(id) { document.getElementById(id).style.display = 'block'; };
+    function next(n) {
+      for (let i = 1; i <= sectionCnt; i++) {
+        if (i == n) { show("step" + i) } else { hide("step" + i) }
+      }
+    }
+    function oder() {
+      setStorage("ordered", true);
+      next(3)
+    }
+
+    function closeThisTab(){
+      window.opener.app.methods.am_odered();
+    }
+  </script>
+</head>
+
+<body>
+
+  <section id="loading">
+    <h1 Align="center" style="height:300px;line-height:300px;">now loading...</h1>
+  </section>
+  <section id="main">
+    <br>
+    <div class="a-section a-spacing-medium a-text-center">
+      <img src="amaz○n.png" height="40%" width="40%" alt="amaz○n">
+    </div>
+    <section id="step1">
+      <div id="authportal-center-section">
+        <h1>ようこそ</h1><br><button onclick="next(2)">次へ</button>
+      </div>
+    </section>
+    <section id="step2">
+      <div id="authportal-center-section">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="a-box">
+          <div class="a-box-inner a-padding-extra-large">
+            <h1>商品</h1>
+            <h1>商品</h1>
+            <h1>商品</h1>
+            <h1>商品</h1>
+            <h1>商品</h1>
+            <br>
+            <br>
+            <br>
+            <label>お届け先</label>
+            <input type="text" value="平安京" readonly />
+            <span class="a-button a-button-span12 a-button-primary"><span class="a-button-inner"><input tabindex="2"
+                  class="a-button-input" aria-labelledby="continue-announce" onclick="oder()" /><span
+                  class="a-button-text" aria-hidden="true">
+                  注文
+                </span></span></span>
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="step3">
+      <div id="authportal-center-section">
+
+
+        ご注文承りました
+        ご利用ありがとうございます
+
+        <button onclick="setStorage('ordered',false)">取り消し(撤去予定)</button><br>
+        説明：リロードすると分かる。<br><br><br>
+        <button onclick="closeThisTab()">戻る</button>
+      </div>
+    </section>
+  </section>
+</body>
+<script>
+  "use strict"
+  document.getElementById("main").style.display = 'none';
+</script>
+
+</html>
