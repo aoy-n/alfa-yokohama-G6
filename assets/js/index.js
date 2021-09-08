@@ -65,7 +65,7 @@ const app = Vue.createApp({
 })
 
 
-app.mount('body')
+const vm = app.mount('body')
 
 window.addEventListener('beforeunload', function (e) {
   e.returnValue = '';
