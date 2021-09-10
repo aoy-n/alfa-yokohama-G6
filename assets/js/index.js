@@ -58,7 +58,7 @@ const app = Vue.createApp({
       this.openTab("market")
     },
     am_odered() {
-      if(this.getStrage("ordered") == true){
+      if(this.getStorage("ordered") == "true"){
         this.closeTab("market");
         this.nextStage("stage1")
       }
