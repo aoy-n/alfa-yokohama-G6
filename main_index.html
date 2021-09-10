@@ -25,7 +25,7 @@
     <!-- タイトルエリア　ここから -->
     <h1 class="main-title"><img src="assets/images/top-image.png" alt="Presented by SCRAP×N・S高リアル脱出ゲーム制作PJ 封鎖された家庭科室からの脱出"></h1>
     <!-- タイトルエリア　ここまで -->
-    <section class="section section--story">
+    <section class="section section--story" v-if="next['stage3']">
       <div class="container">
         <h2 class="section-title section-title--keycolor section-title--story">ストーリー</h2>
         <div class="story">
@@ -111,12 +111,12 @@
         </div>
       </div>
     </section>-->
-    <section class="section" v-if="next['stage1']">
+    <section class="section" v-if="next['stage2']">
       <div class="container">
         <div v-on:click="nextStart()" class="btn">準備OK？では、ゲームスタート！！！<svg class="btn__arrow"></svg></div>
       </div>
     </section>
-    <section class="section" v-if="next['stage2']">
+    <section class="section" v-if="next['stage3']">
       <p>操作説明FAQ等</p>
       <div class="container">
         <div v-on:click="nextStage" class="btn">ウィンドウ再展開<svg class="btn__arrow"></svg></div>
