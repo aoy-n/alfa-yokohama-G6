@@ -39,6 +39,9 @@
           </div>-->
             <button v-on:click="am_oder()" class="btn">購入ページへ</button>
           </p>
+          <p>
+            <button v-on:click="am_odered()" class="btn">購入完了</button>
+          </p>
         </div>
       </div>
     </section>
@@ -116,7 +119,7 @@
     <section class="section" v-if="next['stage2']">
       <p>操作説明FAQ等</p>
       <div class="container">
-        <div v-on:click="reStart()" class="btn">ウィンドウ再展開<svg class="btn__arrow"></svg></div>
+        <div v-on:click="nextStage" class="btn">ウィンドウ再展開<svg class="btn__arrow"></svg></div>
       </div>
     </section>
 
