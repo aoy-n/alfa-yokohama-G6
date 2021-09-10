@@ -51,9 +51,8 @@ const app = Vue.createApp({
     },
     nextStart() {
       console.log("start")
-      //this.st = this.getStorage("stage")
-      //if (!this.st) {this.setStorage("stage",1);this.st=1};
-      this.st = 1
+      this.st = this.getStorage("stage")
+      if (!this.st) {this.setStorage("stage",1);this.st=1};
 
       console.log("stage:" + this.st)
       this.openTab("main" + this.st);
@@ -68,6 +67,29 @@ const app = Vue.createApp({
       this.openTab("main" + this.st);
       this.openTab("itemmenu");
       this.tab["main" + this.st].focus();
+    },
+    nextFinish() {
+      if (this.getStorage("idFinished") == 0) { return; }
+      this.setStorage("idFinished", 0)
+      console.log("finish")
+      this.closeTab("heian")
+      this.closeTab("itemmenu")
+      this.setStorage("ordered",false)
+      this.hideStage("stage3")
+      this.nextStage("stage4")
+
+
+      
+      //friendメール
+
+
+
+
+
+
+
+
+
     },
     am_oder() {
       this.openTab("market")
