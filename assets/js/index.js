@@ -51,7 +51,7 @@ const app = Vue.createApp({
     },
     reStart() {
       this.openTab("main" + this.st);
-      openTab("itemmenu");
+      this.openTab("itemmenu");
       this.tab["main" + this.st].focus();
     },
     am_oder() {
