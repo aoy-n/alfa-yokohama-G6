@@ -79,6 +79,7 @@ const app = Vue.createApp({
       this.clear[stage] = result;
       /* 最終ステージの入力を判定します。 */
       if ( this.clear[stage] === true && final === 'final' ) {
+        this.setStorage("idFinished",true)
         window.location.href = 'final.html';
       }
     },
