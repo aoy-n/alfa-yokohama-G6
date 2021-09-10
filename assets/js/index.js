@@ -58,8 +58,21 @@ const app = Vue.createApp({
       this.openTab("market")
     },
     am_odered() {
-      this.closeTab("market");
-      this.nextStage("stage1")
+      if(this.getStrage("ordered") == true){
+        this.closeTab("market");
+        this.nextStage("stage1")
+      }
+    },
+    setStorage(key, value) {
+      var item = localStorage.setItem(key, value);
+      return localStorage;
+    },
+    getStorage(key) {
+      var value = localStorage.getItem(key);
+      return value;
+    },
+    deleteStorage(key) {
+      localStorage.removeItem(key);
     },
   }
 })
