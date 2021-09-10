@@ -3,10 +3,11 @@ const app = Vue.createApp({
     /* 初期値を設定します */
     return {
       next: {
-        stage1: false,
+        stage1: true,
         stage2: false,
         stage3: false,
         stage4: false,
+        stage5: false,
       },
       tab: {
         market: null,
@@ -16,6 +17,18 @@ const app = Vue.createApp({
     }
   },
   methods: {
+    setStorage(key, value) {
+      var item = localStorage.setItem(key, value);
+      return localStorage;
+    },
+    getStorage(key) {
+      var value = localStorage.getItem(key);
+      return value;
+    },
+    deleteStorage(key) {
+      localStorage.removeItem(key);
+    },
+    
     nextStage(stage) {
       this.next[stage] = true;
     },
@@ -47,7 +60,9 @@ const app = Vue.createApp({
       this.openTab("itemmenu");
       //next(4);
       this.tab["main" + this.st].focus();
-      this.nextStage("stage2")
+      this.hideStage("stage1")
+      this.hideStage("stage2")
+      this.nextStage("stage3")
     },
     reStart() {
       this.openTab("main" + this.st);
@@ -60,29 +75,14 @@ const app = Vue.createApp({
     am_odered() {
       if(this.getStorage("ordered") == "true"){
         this.closeTab("market");
-        this.nextStage("stage1")
+        this.nextStage("stage2")
       }
-    },
-    setStorage(key, value) {
-      var item = localStorage.setItem(key, value);
-      return localStorage;
-    },
-    getStorage(key) {
-      var value = localStorage.getItem(key);
-      return value;
-    },
-    deleteStorage(key) {
-      localStorage.removeItem(key);
     },
   }
 })
 
 
 const vm = app.mount('body')
-function test(){
-  vm.closeTab("maket")
-}
-const hoge = "hogehoge"
 
 window.addEventListener('beforeunload', function (e) {
   e.returnValue = '';
