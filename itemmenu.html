@@ -8,7 +8,7 @@
       margin: 1%;
       border: 8px solid rgb(0, 0, 0);
       text-align: center;
-      height: 40em;
+      height: 43em;
     }
 
     header {
@@ -57,8 +57,8 @@
     }
 
     .content {
-      background-color: #d4d4d4;
       height: 100%;
+      overflow: scroll;
     }
 
     #mailList,
@@ -81,7 +81,7 @@
       flex: 2;
     }
 
-    .mailTytle{
+    .mailTytle {
       font-size: 30px;
       height: 1.5em;
       margin: 0.1em;
@@ -91,8 +91,47 @@
       overflow: hidden;
     }
 
-    .mailBody{
+    .mailBody {
       font-size: 20px;
+    }
+
+    .item {
+      display: flex;
+      height: 15em;
+      border-bottom: 2px solid rgb(0, 0, 0);
+      padding: 1em;
+    }
+
+    .person {
+      display: flex;
+      height: 15em;
+      border-bottom: 2px solid rgb(0, 0, 0);
+      padding: 1em;
+    }
+
+
+
+
+
+    .img {
+      flex: 4;
+      height: 100%;
+
+    }
+
+
+    .comment {
+      flex: 6;
+      height: 100%;
+      text-align: left;
+      padding: 1em;
+      padding-left: 2em;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
   </style>
   <script>
@@ -102,6 +141,7 @@
     const mailAllCnt = 5;//暫定
     const personAllCnt = 5;//暫定
     const itemAllCnt = 5;//暫定
+
 
     function setStorage(key, value) {
       var item = localStorage.setItem(key, value);
@@ -118,9 +158,12 @@
       const params = new URL(window.location.href).searchParams;
       return params.get(key)
     }
-    function hide(id) { document.getElementById(id).setAttribute("hidden", true); }
-    function show(id) { document.getElementById(id).removeAttribute("hidden"); }
-    function next(n) { for (let i = 1; i <= sectionCnt; i++) { if (i == n) { show("section" + i) } else { hide("section" + i) }; } }
+    function hide(id) { const obj = document.getElementById(id); if (obj) { obj.setAttribute("hidden", true); } }
+    function show(id) { const obj = document.getElementById(id); if (obj) { obj.removeAttribute("hidden"); } }
+    function next(n) {
+      for (let i = 1; i <= sectionCnt; i++) { if (i == n) { show("section" + i) } else { hide("section" + i) }; }
+    }
+
     function nextPerson(n) {
       for (let i = 1; i <= n; i++) {
         show("person" + i)
@@ -145,7 +188,7 @@
         hide("mail" + i)
       }
 
-//要改良
+      //要改良
 
 
     }
@@ -159,23 +202,56 @@
       }
     }
     function renew() {
-      nextPerson(Number(getStorage("person")));
-      nextItem(Number(getStorage("item")));
+
+      let p = getStorage("person");
+      if (!p) { p = 0 };
+      nextPerson(Number(p));
+      let i = getStorage("item");
+      if (!i) { i = 0 };
+      nextItem(Number(i));
+
       nextMail(3);
       openMail(0);
     }
-    function onlF() {
-      next(0);
-      renew()
-    }
-    window.onload = onlF
 
-    function onclickFunction(func, elem) {
-      const targetId = elem.getAttribute("targetId");
+    function showImg(e) {
+      const img = e.currentTarget.childNodes[1]
+      window.open(img.src, '_blank')
+    }
+
+    function onclickFunction(e) {
+      const func = this.callFunc;
+      const targetId = e.currentTarget.getAttribute("targetId");
       const n = targetId.substr(-1);
       const sec = document.getElementById(targetId);
       if (sec.getAttribute("hidden")) { func(n) } else { func(0) };
     }
+
+    function setEvent(cl, eve, func, call) {
+      const elements = document.getElementsByClassName(cl);
+      for (el of elements) {
+
+        el.addEventListener(eve, {
+          handleEvent: func,
+          callFunc: call
+        });
+      };
+    }
+
+    function onlF() {
+      next(0);
+      renew();
+      setEvent("menu", "click", onclickFunction, next)
+      setEvent("mailTytle", "click", onclickFunction, openMail)
+      setEvent("img", "click", showImg)
+    }
+
+    window.onload = onlF
+
+
+    window.addEventListener('beforeunload', function (e) {
+      e.returnValue = '';
+    }, false);
 
   </script>
 </head>
@@ -188,17 +264,126 @@
   </div>
   <div id="body">
     <header style="height: 4em;">
-      <div class="menu" targetId=section1 style="background-color: #fbec99;" onclick=onclickFunction(next,this)>人物</div>
-      <div class="menu" targetId=section2 style="background-color: #c5fb99;" onclick=onclickFunction(next,this)>アイテム</div>
-      <div class="menu" targetId=section3 style="background-color: #99f4fb;" onclick=onclickFunction(next,this)>メール</div>
+      <div class="menu" targetId=section1 style="background-color: #fbec99;">人物</div>
+      <div class="menu" targetId=section2 style="background-color: #c5fb99;">アイテム</div>
+      <div class="menu" targetId=section3 style="background-color: #99f4fb;">メール</div>
       <!--<div class="menu" style="background-color: #99fbcd;">記録画像</div>-->
       <!--<div class="menu" style="background-color: #fb99de;">メニュータブあああああああああああ</div>-->
     </header>
-    <main style="height: 34.5em;">
-      <section class="content" id="section1">11111111</section>
+    <main style="height: 39em;">
+      <section class="content" id="section1">
+        <div style="height: 100%;">
+          <div style="border-bottom: 2px solid rgb(0, 0, 0);height: 8%;">
+            ゲーム内で遭遇した人物の情報が保管されています。<br>
+            画像はクリックで拡大表示できます。
+          </div>
+          <div class="person" id="person1">
+            <div class="img">
+              <img src="enigma1_2.png" alt="謎1_2">
+            </div>
+            <div class="comment">
+              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
+              なぞなぞなぞなぞ
+            </div>
+          </div>
+          <!--
+          <div class="person" id="person2">
+            <div class="img">
+              <img src="enigma1_2.png" alt="謎1_2">
+            </div>
+            <div class="comment">
+              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
+              なぞなぞなぞなぞ
+            </div>
+          </div>
+          </div>
+          <div class="person" id="person3">
+            <div class="img">
+              <img src="enigma1_2.png" alt="謎1_2">
+            </div>
+            <div class="comment">
+              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
+              なぞなぞなぞなぞ
+            </div>
+          </div>
+          </div>
+          <div class="person" id="person4">
+            <div class="img">
+              <img src="enigma1_2.png" alt="謎1_2">
+            </div>
+            <div class="comment">
+              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
+              なぞなぞなぞなぞ
+            </div>
+          </div>
+          </div>
+          <div class="person" id="person5">
+            <div class="img">
+              <img src="enigma1_2.png" alt="謎1_2">
+            </div>
+            <div class="comment">
+              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
+              なぞなぞなぞなぞ
+            </div>
+          </div>
+          </div>
+        -->
+
+        </div>
+
+      </section>
       <section class="content" id="section2">
-        <div style="display: flex;height: 100%;">
-          <div class="item" id="item1">あいてむ1</div>
+        <div style="height: 100%;">
+          <div style="border-bottom: 2px solid rgb(0, 0, 0);height: 8%;">
+            ゲーム中に入手したアイテムや情報が保管されています。<br>
+            画像はクリックで拡大表示できます。
+          </div>
+          <div class="item" id="item1">
+            <div class="img">
+              <img src="enigma1_1.png" alt="謎1_1">
+            </div>
+            <div class="comment">
+              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
+              なぞなぞなぞなぞ
+            </div>
+          </div>
+
+
+          <div class="item" id="item2">
+            <div class="img">
+              <img src="enigma1_2.png" alt="謎1_1">
+            </div>
+            <div class="comment">
+              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
+              なぞなぞなぞなぞ
+            </div>
+          </div>
+          <div class="item" id="item3">
+            <div class="img">
+              <img src="enigma2_0.png" alt="謎1_1">
+            </div>
+            <div class="comment">
+              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
+              なぞなぞなぞなぞ
+            </div>
+          </div>
+          <div class="item" id="item4">
+            <div class="img">
+              <img src="enigma1_1.png" alt="謎1_1">
+            </div>
+            <div class="comment">
+              なぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞ
+              なぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞ
+              なぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞ
+            </div>
+          </div>
+          <div class="item" id="item5">
+            <div class="img"><img src="enigma1_1.png" alt="謎1_1"></div>
+            <div class="comment">
+              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
+              なぞなぞなぞなぞ
+            </div>
+          </div>
 
 
 
@@ -207,18 +392,29 @@
 
 
         </div>
-      
       </section>
       <section class="content" id="section3">
-        <div style="display: flex;height: 100%;">
-          <section id="mailList">
-
-            <div class="mailTytle" id="mail1" targetId=sectionMail1 onclick=onclickFunction(openMail,this)>メール1通目</div>
-            <div class="mailTytle" id="mail2" targetId=sectionMail2 onclick=onclickFunction(openMail,this)>メール2通目</div>
-            <div class="mailTytle" id="mail3" targetId=sectionMail3 onclick=onclickFunction(openMail,this)>メール3通目</div>
-            <div class="mailTytle" id="mail4" targetId=sectionMail4 onclick=onclickFunction(openMail,this)>メール4通目</div>
-            <div class="mailTytle" id="mail5" targetId=sectionMail5 onclick=onclickFunction(openMail,this)>メール5通目</div>
+        <div style="border-bottom: 2px solid rgb(0, 0, 0);height: 8%;">
+          届いたメールが保管されています。<br>
           
+        </div>
+        <div style="display: flex;height: 89%;">
+          <section id="mailList">
+            <div class="mailTytle" id="mail1" targetId=sectionMail1>メール1通目</div>
+            <div class="mailTytle" id="mail2" targetId=sectionMail2>メール2通目</div>
+            <div class="mailTytle" id="mail3" targetId=sectionMail3>メール3通目</div>
+            <div class="mailTytle" id="mail4" targetId=sectionMail4>メール4通目</div>
+            <div class="mailTytle" id="mail5" targetId=sectionMail5>メール5通目</div>
+            <div class="mailTytle" id="mail1" targetId=sectionMail1>メール1通目</div>
+            <div class="mailTytle" id="mail2" targetId=sectionMail2>メール2通目</div>
+            <div class="mailTytle" id="mail3" targetId=sectionMail3>メール3通目</div>
+            <div class="mailTytle" id="mail4" targetId=sectionMail4>メール4通目</div>
+            <div class="mailTytle" id="mail5" targetId=sectionMail5>メール5通目</div>
+            <div class="mailTytle" id="mail1" targetId=sectionMail1>メール1通目</div>
+            <div class="mailTytle" id="mail2" targetId=sectionMail2>メール2通目</div>
+            <div class="mailTytle" id="mail3" targetId=sectionMail3>メール3通目</div>
+            <div class="mailTytle" id="mail4" targetId=sectionMail4>メール4通目</div>
+            <div class="mailTytle" id="mail5" targetId=sectionMail5>メール5通目</div>
           </section>
           <section id="mail">
 
