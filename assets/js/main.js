@@ -68,6 +68,18 @@ const app = Vue.createApp({
     }
   },
   methods: {
+    setStorage(key, value) {
+      var item = localStorage.setItem(key, value);
+      return localStorage;
+    },
+    getStorage(key) {
+      var value = localStorage.getItem(key);
+      return value;
+    },
+    deleteStorage(key) {
+      localStorage.removeItem(key);
+    },
+    
     /* 「送信」ボタンをクリックした場合の動作です。 */
     answerInput(event, stage, number, final) {
       /* answerをtrueまたはfalseにします。 */
@@ -79,8 +91,12 @@ const app = Vue.createApp({
       this.clear[stage] = result;
       /* 最終ステージの入力を判定します。 */
       if ( this.clear[stage] === true && final === 'final' ) {
-        this.setStorage("idFinished",true)
-        window.location.href = 'final.html';
+        this.setStorage("isFinished",true)
+        
+        
+        window.opener.vm.nextFinish()
+        
+        
       }
     },
     /* クリア画面「次のステージへ」ボタンをクリックした時の動作を設定します
