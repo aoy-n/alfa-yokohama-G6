@@ -25,6 +25,13 @@
     <!-- タイトルエリア　ここから -->
     <h1 class="main-title"><img src="assets/images/main-image.png" alt="封鎖された家庭科室からの脱出"></h1>
     <!-- タイトルエリア　ここまで -->
+    
+    <section id="loading">
+      <h1 Align="center" style="height:300px;line-height:300px;">now loading...</h1>
+    </section>
+    <section id="loaded" style="display: none;">
+
+      
     <div id="stage">
 
       <!-- STAGE1　ここから -->
@@ -50,7 +57,12 @@
                 </div>
               </div>
 Youtube貼り付けここまで -->
-                
+
+              
+                <button class="itemButton" v-on:click="getItem('item',1)">アイテム入手</button>
+                <button class="itemButton" v-on:click="getItem('item',0)">テスト用/アイテム破棄</button>
+                <!--確認：cssはbuttonに対して掛かってるのか？-->
+
             </div>
           </div>
         </section>
@@ -271,6 +283,7 @@ STAGE3-3追加　ここまで -->
       <!-- STAGE3　ここまで -->
 
     </div>
+    </section>
   </main>
   <footer class="footer section bg-color--gray">
     <div class="container">
