@@ -98,6 +98,10 @@ const app = Vue.createApp({
         this.nextStage("stage2")
       }
     },
+    allClose() {
+      this.closeTab("main" + this.st);
+      this.closeTab("itemmenu");
+    },
   }
 })
 
