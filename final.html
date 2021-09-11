@@ -7,6 +7,22 @@
   <title>封鎖された家庭科室からの脱出 │ Project N</title>
   <link rel="stylesheet" href="assets/css/normalize.css">
   <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+    let tab ={};
+    function openTab(name) {
+      if (!tab[name]) {
+        tab[name] = window.open(name + ".html", '_blank');
+      } else if (tab[name].closed) {
+        tab[name] = window.open(name + ".html", '_blank');
+      } else {
+        tab[name].focus()
+      }
+    }
+    function re_am_oder(){
+      if (tab["itemmenu"]) {tab["itemmenu"].close()}
+      window.open("main_index.html", '_blank').vm.re_am_oder();
+    }
+  </script>
 </head>
 <body>
   <header class="header">
@@ -22,10 +38,17 @@
     <section class="section">
       <div class="container">
         <div class="box bg-color--subcolor">
-          <h2 class="section-title--border">全ステージ クリア！</h2>
-          <p class="text-center">おめでとう！あなたはついに全ての謎を解き、先生を救うことができた！<br>
-            そして先生からあるメッセージが伝えられた・・・</p>
+          <h2 class="section-title--border">クリア！</h2>
+          <p class="text-center">
+            通話が切れた。<br>
+            無事、封印に成功したようだ。
+          </p>
         </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+<!--        </div>
       </div>
     </section>
     <section class="section">
@@ -34,20 +57,32 @@
              <img src="assets/images/stage.png" alt="">
           </figure>
 
-<!--  YouTube貼り付け
+  YouTube貼り付け
             <div class="youtube__container">
               <div class="youtube">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/IRyJe-0Uie0?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
 Youtube貼り付けここまで-->
-          ß
       </div>
-         -->
-        <p class="text-center">あなたはきっと、このメッセージをずっと忘れることはないだろう・・・。<br>
-          これからも家庭科室が封鎖されるようなことがあったら、<br>
-          この教訓をしっかり思い出してくれ。</p>
-        <p class="text-center">それでは、また会おう！</p>
+        <p class="text-center">
+          
+          <br>友人からメールが来ていたようなので確認しておく。
+          <br><input type="button" onclick="openTab('itemmenu')" value="ウィンドウ再展開"></button>
+          <br>ストーリー
+          <br>ストーリー
+          <br>通販サイトを確認してみる。届け先は……
+          <br>まだ、平安京なようだ。
+          <br>ということは。
+          <br>もう一度、平安京に送りつける事が、できるのではないか…？
+          <br>
+          <br><span style="font-size: 200px;">〜Fin〜</span>
+          <br>
+          <br>
+          <br><button onclick="re_am_oder()" class="btn">購入ページへ</button>
+          <br>
+    
+        </p>
       </div>
     </section>
     <section class="section bg-color--keycolor">
