@@ -109,3 +109,7 @@ const vm = app.mount('body')
 window.addEventListener('beforeunload', function (e) {
   e.returnValue = '';
 }, false);
+window.addEventListener('load', function() {
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('loaded').style.display = 'block';
+}, false);
