@@ -15,18 +15,14 @@
     const sectionCnt = 3;
 
     function setStorage(key, value) {
-      var item = localStorage.setItem(key, value);
-      console.log("setStrage: " + key + " : " + value)
-      return localStorage;
+      localStorage.setItem(key, value);
     }
     function getStorage(key) {
       var value = localStorage.getItem(key);
-      console.log("getStrage: " + key + " : " + value)
       return value;
     }
     function deleteStorage(key) {
       localStorage.removeItem(key);
-      console.log("delStrage: " + key + " : " + value)
     }
 
     function open() {
@@ -36,7 +32,7 @@
         next(1);
       }
       document.getElementById('loading').style.display = 'none';
-      document.getElementById('main').style.display = 'block';
+      document.getElementById('loaded').style.display = 'block';
     }
     window.onload = open;
 
@@ -53,8 +49,7 @@
     }
 
     function closeThisTab(){
-      //window.opener.vm.am_odered();
-      window.close()
+      window.opener.vm.am_odered();
     }
   </script>
 </head>
@@ -64,7 +59,7 @@
   <section id="loading">
     <h1 Align="center" style="height:300px;line-height:300px;">now loading...</h1>
   </section>
-  <section id="main">
+  <section id="loaded" style="display: none;">
     <br>
     <div class="a-section a-spacing-medium a-text-center">
       <img src="assets/images/amaz○n.png" height="40%" width="40%" alt="amaz○n">
@@ -119,9 +114,4 @@
     </section>
   </section>
 </body>
-<script>
-  "use strict"
-  document.getElementById("main").style.display = 'none';
-</script>
-
 </html>
