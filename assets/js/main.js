@@ -91,6 +91,9 @@ const app = Vue.createApp({
       this.clear[stage] = false;
       this.next[stage] = true;
     },
+    getItem(type,n){
+      this.setStorage(type,n)
+    },
   }
 })
 
@@ -129,3 +132,11 @@ app.component('answer-input', {
 })
 
 app.mount('#stage')
+
+window.addEventListener('beforeunload', function(e) {
+  e.returnValue = '';
+}, false);
+window.addEventListener('load', function() {
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('loaded').style.display = 'block';
+}, false);
