@@ -7,9 +7,6 @@
   <title>封鎖された家庭科室からの脱出 │ Project N</title>
   <link rel="stylesheet" href="assets/css/normalize.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script>
-    const huga = 200;
-  </script>
 </head>
 <body>
   <svg width="0" height="0" class="hidden">
@@ -45,10 +42,7 @@
               <li>30分を超えるとS先生は出てこられない</li>
             </ul>
           </div>-->
-            <button v-on:click="am_oder()" class="btn">購入ページへ</button>
-          </p>
-          <p>
-            <button v-on:click="am_odered()" class="btn">購入完了</button>
+            <button id="oderButton" v-on:click="am_oder()" class="btn">購入ページへ</button>
           </p>
         </div>
       </div>
@@ -121,7 +115,7 @@
     </section>-->
     <section class="section" v-if="next['stage2']">
       <div class="container">
-        <div v-on:click="nextStart()" class="btn">準備OK？では、ゲームスタート！！！<svg class="btn__arrow"></svg></div>
+        <div v-on:click="nextStart()" class="btn">通話を開始<svg class="btn__arrow"></svg></div>
       </div>
     </section>
     <section class="section" v-if="next['stage3']">
@@ -130,9 +124,12 @@
         <div v-on:click="nextStage" class="btn">ウィンドウ再展開<svg class="btn__arrow"></svg></div>
       </div>
     </section>
-
-
-
+      <section class="section" v-if="next['stage3']">
+        <p>操作説明FAQ等</p>
+        <div class="container">
+          <div v-on:click="nextStage" class="btn">ウィンドウ再展開<svg class="btn__arrow"></svg></div>
+        </div>
+      </section>
     </section>
   </main>
   <footer class="footer section bg-color--gray">
@@ -144,13 +141,5 @@
   </footer>
   <script src="https://unpkg.com/vue@next"></script>
   <script src="assets/js/index.js"></script>
-  <script>
-
-    const hoge = 100
-    console.log(vm)
-    const vmapp = vm
-    console.log(vmapp)
-    vmapp.openTab("main1")
-  </script>
 </body>
 </html>
