@@ -37,12 +37,9 @@ const app = Vue.createApp({
       console.log(this.tab.market)
       if (!this.tab[name]) {
         this.tab[name] = window.open(name + ".html", '_blank');
-        console.log(this.tab[name].closed);
       } else if (this.tab[name].closed) {
-        console.log(this.tab[name].closed);
         this.tab[name] = window.open(name + ".html", '_blank');
       } else {
-        console.log(this.tab[name].closed);
         this.tab[name].focus()
       }
     },
@@ -57,7 +54,6 @@ const app = Vue.createApp({
       console.log("stage:" + this.st)
       this.openTab("main" + this.st);
       this.openTab("itemmenu");
-      //next(4);
       this.tab["main" + this.st].focus();
       this.hideStage("stage1")
       this.hideStage("stage2")
@@ -69,14 +65,14 @@ const app = Vue.createApp({
       this.tab["main" + this.st].focus();
     },
     nextFinish() {
-      if (this.getStorage("idFinished") == 0) { return; }
-      this.setStorage("idFinished", 0)
-      console.log("finish")
-      this.closeTab("heian")
-      this.closeTab("itemmenu")
-      this.setStorage("ordered",false)
-      this.hideStage("stage3")
-      this.nextStage("stage4")
+      if (this.getStorage("isFinished") == "true") {
+        this.setStorage("isFinished", false)
+        console.log("finish")
+        this.setStorage("ordered", false)
+        this.closeTab("main" + this.st);
+        this.hideStage("stage1");
+        this.hideStage("stage2");
+        this.hideStage("stage3");
 
 
       
@@ -89,7 +85,8 @@ const app = Vue.createApp({
 
 
 
-
+        window.removeEventListener('beforeunload', this.allClose());
+        window.location.href = 'final.html';
     },
     am_oder() {
       this.openTab("market")
@@ -105,11 +102,14 @@ const app = Vue.createApp({
 
 
 const vm = app.mount('body')
+window.vm = vm
 
-window.addEventListener('beforeunload', function (e) {
-  e.returnValue = '';
-}, false);
-window.addEventListener('load', function() {
+window.addEventListener('beforeunload', vm.allClose(), false);
+window.addEventListener('load', function () {
+  if (vm.getStorage("ordered") == "true") {
+    vm.hideStage("stage1");
+    vm.nextStage("stage2");
+  }
   document.getElementById('loading').style.display = 'none';
   document.getElementById('loaded').style.display = 'block';
 }, false);
