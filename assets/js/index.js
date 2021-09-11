@@ -47,7 +47,7 @@ const app = Vue.createApp({
       }
     },
     closeTab(name) {
-      if (this.tab[name]) { this.tab[name].close(); };
+      if (this.tab[name]) {if (!this.tab[name].closed) {this.tab[name].close();};};
     },
     nextStart() {
       console.log("start")
