@@ -87,6 +87,7 @@ const app = Vue.createApp({
 
         window.removeEventListener('beforeunload', this.allClose());
         window.location.href = 'final.html';
+      }
     },
     am_oder() {
       this.openTab("market")
