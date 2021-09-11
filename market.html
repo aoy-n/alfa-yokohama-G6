@@ -3,12 +3,76 @@
 
 <head>
   <base target="_top">
-  <link rel="stylesheet"
-    href="https://images-fe.ssl-images-amazon.com/images/I/61g+ivtVz9L._RC|11Fd9tJOdtL.css,11tfezETfFL.css,31Q3id-QR0L.css,31U9HrBLKmL.css_.css?AUIClients/AmazonUI#jp.not-trident" />
-  <link rel="stylesheet"
-    href="https://images-fe.ssl-images-amazon.com/images/I/01SdjaY0ZsL._RC|31jdWD+JB+L.css,41DBI6BbFkL.css_.css?AUIClients/AuthenticationPortalAssets" />
-  <link rel="stylesheet" href="https://images-fe.ssl-images-amazon.com/images/I/11qeL1AgUGL.css?AUIClients/CVFAssets" />
+  <style>
+    body {
+      text-align: center;
 
+    }
+
+    button {
+      display: inline-block;
+      font-size: 20px;
+      /* 文字サイズ */
+      text-align: center;
+      /* 文字位置   */
+      cursor: pointer;
+      /* カーソル   */
+      height: 1.9em;
+      width: 100%;
+      background: #e9cc59;
+      /* 背景色     */
+      color: #000000;
+      /* 文字色     */
+      line-height: 1em;
+      /* 1行の高さ  */
+      opacity: 0.7;
+      /* 透明度     */
+      transition: .1s;
+      /* なめらか変化 */
+      border: 1px solid rgb(0, 0, 0);
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    #loaded {
+      display: none;
+      width: 100%;
+    }
+
+    main {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 60em;
+
+    }
+
+    h1 {
+      font-family: serif;
+    }
+
+    .box {
+      width: 100%;
+      border: 1px solid rgb(95, 95, 95);
+      padding: 2em;
+      padding-top: 3em;
+      overflow: scroll;
+    }
+    .src {
+      flex: 1;
+    }
+    label {
+      font-size: 1.5em;
+      font-family: serif;
+      font-weight: bold;
+    }
+    select, option, input{
+      background-color: rgb(235, 235, 235);
+      border:3px solid #e9cc59;
+      cursor: pointer;
+    }
+  </style>
   <script>
     "use strict"
 
@@ -44,11 +108,14 @@
       }
     }
     function oder() {
-      setStorage("ordered", true);
-      next(3)
+      if(document.getElementById("select").value == "平安京"){
+        setStorage("ordered", true);
+        next(3);
+      }else{
+        window.alert("必須項目を選択してください")
+      }
     }
-
-    function closeThisTab(){
+    function closeThisTab() {
       window.opener.vm.am_odered();
     }
   </script>
@@ -59,59 +126,93 @@
   <section id="loading">
     <h1 Align="center" style="height:300px;line-height:300px;">now loading...</h1>
   </section>
-  <section id="loaded" style="display: none;">
+  <section id="loaded">
     <br>
-    <div class="a-section a-spacing-medium a-text-center">
-      <img src="assets/images/amaz○n.png" height="40%" width="40%" alt="amaz○n">
+    <div style="text-align: center;">
+      <img src="amaz○n.png" height="40%" width="40%" alt="amaz○n">
     </div>
-    <section id="step1">
-      <div id="authportal-center-section">
-        <h1>ようこそ</h1><br><button onclick="next(2)">次へ</button>
-      </div>
-    </section>
-    <section id="step2">
-      <div id="authportal-center-section">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-        <div class="a-box">
-          <div class="a-box-inner a-padding-extra-large">
-            <h1>商品</h1>
-            <h1>商品</h1>
-            <h1>商品</h1>
-            <h1>商品</h1>
-            <h1>商品</h1>
-            <br>
-            <br>
-            <br>
-            <label>お届け先</label>
-            <input type="text" value="平安京" readonly />
-            <span class="a-button a-button-span12 a-button-primary"><span class="a-button-inner"><input tabindex="2"
-                  class="a-button-input" aria-labelledby="continue-announce" onclick="oder()" /><span
-                  class="a-button-text" aria-hidden="true">
-                  注文
-                </span></span></span>
-
-
+    <main>
+      <section id="step1">
+        <div style="text-align: center;">
+          <h1 style="font-size: 50px;">ようこそ</h1>
+          <br>
+          <h2>Cool で Elegant な Internet の Shopping を、あなたに。</h2>
+          <br>
+          <br>
+          <button onclick="next(2)">商品を探す</button>
+        </div>
+      </section>
+      <section id="step2" style="width:100%;">
+        <div class="center">
+          <br>
+        <div style="font-weight: bold;font-family: serif;font-size: 5em;">
+        『nPhone 21 Pro』
+        </div>
+        <div style="width:100%;display: flex;">
+          <img src="phone.png" height="40%" width="40%" alt="スマホ">
+          <p style="font-weight: bold;;font-family: serif;font-size: 1.25em;text-align:left;padding-left: 1em;">
+<br>次世代型スマートフォン『nPhone 21 Pro』ついに登場！
+<br>安心安全信頼の林檎社製！
+<br>超高性能！バッテリー超長持ち！超キレイに撮れるカメラ！
+<br>この商品を購入すると、幸福の運気が訪れます！
+<br>ご購入された方からは、「かわいい彼女ができました！」「ステキな彼氏ができました！」「宝くじに当たりました！」など嬉しいご報告を受けています！
+<br>さあ貴方も一緒にステキな毎日を過ごしませんか？
+          </p>
+        </div>
+        <div class="box">
+          <div style="display: flex;">
+            <div class="src"></div>
+            <div class="src">
+              <label>個数</label><br>
+              <input type="number" value=1 style="width: 8em;">
+            </div>
+            <div class="src">
+              <label>色</label><br>
+              <select style="width: 8em;">
+                <option selected>black</option>
+                <option>white</option>
+                <option>red</option>
+                <option>blue</option>
+                <option>rainbow</option>
+              </select>
+            </div>
+            <div class="src">
+              <label>決済方法</label><br>
+              <select style="width: 8em;">
+                <option selected>クレジット</option>
+                <option>コンビニ決済</option>
+                <option>商品券</option>
+                <option>現金</option>
+                <option>出世払い</option>
+              </select>
+            </div>
+            <div class="src">
+              <label>お届け先</label><br>
+              <select id="select" style="width: 8em;">
+                <option selected>------</option>
+                <option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option>
+              </select>
+            </div>
+            <div class="src"></div>
           </div>
+          <br>
+          <br>
+          <button onclick="oder()">注文</button>
         </div>
       </div>
-    </section>
-    <section id="step3">
-      <div id="authportal-center-section">
-
-
-        ご注文承りました
-        ご利用ありがとうございます
-
-        <button onclick="setStorage('ordered',false)">取り消し(撤去予定)</button><br>
-        説明：リロードすると分かる。<br><br><br>
-        <button onclick="closeThisTab()">戻る</button>
-      </div>
-    </section>
+      </section>
+      <section id="step3">
+        <div class="center">
+          <br>
+          <h1 style="font-size: 3em;">
+            ご注文承りました<br>
+            ご利用ありがとうございます
+          </h1>
+          <button onclick="closeThisTab()">戻る</button>
+        </div>
+      </section>
+    </main>
   </section>
 </body>
+
 </html>
