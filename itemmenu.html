@@ -100,6 +100,8 @@
 
     const sectionCnt = 3;
     const mailAllCnt = 5;//暫定
+    const personAllCnt = 5;//暫定
+    const itemAllCnt = 5;//暫定
 
     function setStorage(key, value) {
       var item = localStorage.setItem(key, value);
@@ -119,8 +121,35 @@
     function hide(id) { document.getElementById(id).setAttribute("hidden", true); }
     function show(id) { document.getElementById(id).removeAttribute("hidden"); }
     function next(n) { for (let i = 1; i <= sectionCnt; i++) { if (i == n) { show("section" + i) } else { hide("section" + i) }; } }
-
+    function nextPerson(n) {
+      for (let i = 1; i <= n; i++) {
+        show("person" + i)
+      }
+      for (let i = n + 1; i <= personAllCnt; i++) {
+        hide("person" + i)
+      }
+    }
+    function nextItem(n) {
+      for (let i = 1; i <= n; i++) {
+        show("item" + i)
+      }
+      for (let i = n + 1; i <= itemAllCnt; i++) {
+        hide("item" + i)
+      }
+    }
     function nextMail(n) {
+      for (let i = 1; i <= n; i++) {
+        show("mail" + i)
+      }
+      for (let i = n + 1; i <= itemAllCnt; i++) {
+        hide("mail" + i)
+      }
+
+//要改良
+
+
+    }
+    function openMail(n) {
       for (let i = 1; i <= mailAllCnt; i++) {
         if (i == n) {
           show("sectionMail" + i)
@@ -129,8 +158,16 @@
         };
       }
     }
-
-    function onlF() { next(0); nextMail(0) }
+    function renew() {
+      nextPerson(Number(getStorage("person")));
+      nextItem(Number(getStorage("item")));
+      nextMail(3);
+      openMail(0);
+    }
+    function onlF() {
+      next(0);
+      renew()
+    }
     window.onload = onlF
 
     function onclickFunction(func, elem) {
@@ -147,7 +184,7 @@
   <div>
     <span style="font-size: 1em;font-weight: bold;">オンラインリアル脱出ゲーム『平安京からの脱出』</span>
     <span style="font-size: 2em;font-weight: bold;">情報管理ツール</span>
-    <span style="float: right;"><button class="button" onclick="next(0);nextMail(0);">更新</button></span>
+    <span style="float: right;"><button class="button" onclick="renew()">更新</button></span>
   </div>
   <div id="body">
     <header style="height: 4em;">
@@ -159,27 +196,29 @@
     </header>
     <main style="height: 34.5em;">
       <section class="content" id="section1">11111111</section>
-      <section class="content" id="section2">22222222</section>
+      <section class="content" id="section2">
+        <div style="display: flex;height: 100%;">
+          <div class="item" id="item1">あいてむ1</div>
+
+
+
+
+
+
+
+        </div>
+      
+      </section>
       <section class="content" id="section3">
         <div style="display: flex;height: 100%;">
           <section id="mailList">
 
-            <div class="mailTytle" id="mail1" targetId=sectionMail1 onclick=onclickFunction(nextMail,this)>メール1通目</div>
-            <div class="mailTytle" id="mail2" targetId=sectionMail2 onclick=onclickFunction(nextMail,this)>メール2通目</div>
-            <div class="mailTytle" id="mail3" targetId=sectionMail3 onclick=onclickFunction(nextMail,this)>メール3通目</div>
-            <div class="mailTytle" id="mail4" targetId=sectionMail4 onclick=onclickFunction(nextMail,this)>メール4通目</div>
-            <div class="mailTytle" id="mail5" targetId=sectionMail5 onclick=onclickFunction(nextMail,this)>メール5通目</div>
-            <div class="mailTytle" id="mail1" targetId=sectionMail1 onclick=onclickFunction(nextMail,this)>メール1通目</div>
-            <div class="mailTytle" id="mail2" targetId=sectionMail2 onclick=onclickFunction(nextMail,this)>メール2通目</div>
-            <div class="mailTytle" id="mail3" targetId=sectionMail3 onclick=onclickFunction(nextMail,this)>メール3通目</div>
-            <div class="mailTytle" id="mail4" targetId=sectionMail4 onclick=onclickFunction(nextMail,this)>メール4通目</div>
-            <div class="mailTytle" id="mail5" targetId=sectionMail5 onclick=onclickFunction(nextMail,this)>メール5通目</div>
-            <div class="mailTytle" id="mail1" targetId=sectionMail1 onclick=onclickFunction(nextMail,this)>メール1通目</div>
-            <div class="mailTytle" id="mail2" targetId=sectionMail2 onclick=onclickFunction(nextMail,this)>メール2通目</div>
-            <div class="mailTytle" id="mail3" targetId=sectionMail3 onclick=onclickFunction(nextMail,this)>メール3通目</div>
-            <div class="mailTytle" id="mail4" targetId=sectionMail4 onclick=onclickFunction(nextMail,this)>メール4通目</div>
-            <div class="mailTytle" id="mail5" targetId=sectionMail5 onclick=onclickFunction(nextMail,this)>メール5通目</div>
-
+            <div class="mailTytle" id="mail1" targetId=sectionMail1 onclick=onclickFunction(openMail,this)>メール1通目</div>
+            <div class="mailTytle" id="mail2" targetId=sectionMail2 onclick=onclickFunction(openMail,this)>メール2通目</div>
+            <div class="mailTytle" id="mail3" targetId=sectionMail3 onclick=onclickFunction(openMail,this)>メール3通目</div>
+            <div class="mailTytle" id="mail4" targetId=sectionMail4 onclick=onclickFunction(openMail,this)>メール4通目</div>
+            <div class="mailTytle" id="mail5" targetId=sectionMail5 onclick=onclickFunction(openMail,this)>メール5通目</div>
+          
           </section>
           <section id="mail">
 
