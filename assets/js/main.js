@@ -93,7 +93,8 @@ const app = Vue.createApp({
       if ( this.clear[stage] === true && final === 'final' ) {
         this.setStorage("isFinished",true)
         
-        
+        window.removeEventListener('beforeunload', hoge, false);
+        window.opener.focus()
         window.opener.vm.nextFinish()
         
         
@@ -149,10 +150,29 @@ app.component('answer-input', {
 
 app.mount('#stage')
 
-window.addEventListener('beforeunload', function(e) {
-  e.returnValue = '';
-}, false);
+function hoge(){
+  //
+}
+
+window.addEventListener('beforeunload', hoge, false);
 window.addEventListener('load', function() {
   document.getElementById('loading').style.display = 'none';
   document.getElementById('loaded').style.display = 'block';
 }, false);
+
+function showImg(e) {
+  const img = e.currentTarget.childNodes[1]
+  window.open(img.src, '_blank')
+}
+
+function setEvent(cl, eve, func, call) {
+  const elements = document.getElementsByClassName(cl);
+  for (el of elements) {
+    el.addEventListener(eve, {
+      handleEvent: func,
+      callFunc: call
+    });
+  };
+}
+
+setEvent("image__container", "click", showImg)
