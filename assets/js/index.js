@@ -78,17 +78,8 @@ const app = Vue.createApp({
         this.hideStage("stage1");
         this.hideStage("stage2");
         this.hideStage("stage3");
-
-
       
-      //friendメール
-
-
-
-
-
-
-
+        this.setStorage("mailList", this.getStorage("mailList")+",friend"+this.st);
 
         window.removeEventListener('beforeunload', this.allClose());
         window.location.href = 'final.html';
