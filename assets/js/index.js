@@ -36,13 +36,16 @@ const app = Vue.createApp({
       this.next[stage] = false;
     },
     openTab(name) {
-      console.log(this.tab.market)
       if (!this.tab[name]) {
-        this.tab[name] = window.open(name + ".html", '_blank');
+        const tab = window.open(name + ".html", '_blank');
+        this.tab[name] = tab
+        return tab;
       } else if (this.tab[name].closed) {
-        this.tab[name] = window.open(name + ".html", '_blank');
+        const tab = window.open(name + ".html", '_blank');
+        this.tab[name] = tab
+        return tab;
       } else {
-        this.tab[name].focus()
+        return this.tab[name].focus()
       }
     },
     closeTab(name) {
@@ -54,17 +57,17 @@ const app = Vue.createApp({
       if (!this.st) {this.setStorage("stage",1);this.st=1};
 
       console.log("stage:" + this.st)
-      this.openTab("main" + this.st);
+      const main = this.openTab("main" + this.st);
       this.openTab("itemmenu");
-      this.tab["main" + this.st].focus();
       this.hideStage("stage1")
       this.hideStage("stage2")
       this.nextStage("stage3")
+      main.focus();
     },
     reStart() {
-      this.openTab("main" + this.st);
+      const main = this.openTab("main" + this.st);
       this.openTab("itemmenu");
-      this.tab["main" + this.st].focus();
+      main.focus();
     },
     nextFinish() {
       if (this.getStorage("isFinished") == "true") {
