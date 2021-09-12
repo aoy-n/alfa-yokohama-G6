@@ -110,6 +110,7 @@
     function oder() {
       if(document.getElementById("select").value == "平安京"){
         setStorage("ordered", true);
+        setStorage("mailList", getStorage("mailList")+",am");
         next(3);
       }else{
         window.alert("必須項目を選択してください")
