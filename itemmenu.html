@@ -158,8 +158,8 @@
       const params = new URL(window.location.href).searchParams;
       return params.get(key)
     }
-    function hide(id) { const obj = document.getElementById(id); if (obj) { obj.setAttribute("hidden", true); } }
-    function show(id) { const obj = document.getElementById(id); if (obj) { obj.removeAttribute("hidden"); } }
+    function hide(id) { const obj = document.getElementById(id); if (obj) { obj.style.display = "none"; } }
+    function show(id) { const obj = document.getElementById(id); if (obj) { obj.style.display = "block"; } }
     function next(n) {
       for (let i = 1; i <= sectionCnt; i++) { if (i == n) { show("section" + i) } else { hide("section" + i) }; }
     }
@@ -224,7 +224,7 @@
       const targetId = e.currentTarget.getAttribute("targetId");
       const n = targetId.substr(-1);
       const sec = document.getElementById(targetId);
-      if (sec.getAttribute("hidden")) { func(n) } else { func(0) };
+      if (sec.style.display == "none") { func(n) } else { func(0) };
     }
 
     function setEvent(cl, eve, func, call) {
@@ -277,7 +277,8 @@
             ゲーム内で遭遇した人物の情報が保管されています。<br>
             画像はクリックで拡大表示できます。
           </div>
-          <div class="person" id="person1">
+          <div id="person1">
+            <div class="person">
             <div class="img">
               <img src="enigma1_2.png" alt="謎1_2">
             </div>
@@ -285,50 +286,12 @@
               なぞなぞなぞなぞなぞなぞなぞなぞ<br>
               なぞなぞなぞなぞ
             </div>
-          </div>
-          <!--
-          <div class="person" id="person2">
-            <div class="img">
-              <img src="enigma1_2.png" alt="謎1_2">
-            </div>
-            <div class="comment">
-              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
-              なぞなぞなぞなぞ
             </div>
           </div>
-          </div>
-          <div class="person" id="person3">
-            <div class="img">
-              <img src="enigma1_2.png" alt="謎1_2">
-            </div>
-            <div class="comment">
-              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
-              なぞなぞなぞなぞ
-            </div>
-          </div>
-          </div>
-          <div class="person" id="person4">
-            <div class="img">
-              <img src="enigma1_2.png" alt="謎1_2">
-            </div>
-            <div class="comment">
-              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
-              なぞなぞなぞなぞ
-            </div>
-          </div>
-          </div>
-          <div class="person" id="person5">
-            <div class="img">
-              <img src="enigma1_2.png" alt="謎1_2">
-            </div>
-            <div class="comment">
-              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
-              なぞなぞなぞなぞ
-            </div>
-          </div>
-          </div>
-        -->
 
+          
+          
+          
         </div>
 
       </section>
@@ -338,7 +301,8 @@
             ゲーム中に入手したアイテムや情報が保管されています。<br>
             画像はクリックで拡大表示できます。
           </div>
-          <div class="item" id="item1">
+          <div id="item1">
+            <div class="item">
             <div class="img">
               <img src="assets/images/nazo1-1.png" alt="謎1_1">
             </div>
@@ -346,10 +310,12 @@
               なぞなぞなぞなぞなぞなぞなぞなぞ<br>
               なぞなぞなぞなぞ
             </div>
+            </div>
           </div>
 
 
-          <div class="item" id="item2">
+          <div id="item2">
+            <div class="item">
             <div class="img">
               <img src="assets/images/nazo1-2.png" alt="謎1_2">
             </div>
@@ -357,8 +323,10 @@
               なぞなぞなぞなぞなぞなぞなぞなぞ<br>
               なぞなぞなぞなぞ
             </div>
+            </div>
           </div>
-          <div class="item" id="item3">
+          <div id="item3">
+            <div class="item">
             <div class="img">
               <img src="assets/images/kinko.png" alt="封印の箱">
             </div>
@@ -366,8 +334,10 @@
               スマホを封印することができる不思議な箱。<br>
               かなり頑丈で、とても壊せそうにないらしい。
             </div>
+            </div>
           </div>
-          <div class="item" id="item4">
+          <div id="item4">
+            <div class="item">
             <div class="img">
               <img src="assets/images/nazo2-0.png" alt="謎2_0">
             </div>
@@ -375,8 +345,10 @@
               なぞなぞなぞなぞなぞなぞなぞなぞ<br>
               なぞなぞなぞなぞ
             </div>
+            </div>
           </div>
-          <div class="item" id="item5">
+          <div id="item5">
+            <div class="item">
             <div class="img">
               <img src="assets/images/nazo2-1.png" alt="謎2_1">
             </div>
@@ -385,33 +357,42 @@
               なぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞ
               なぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞ
             </div>
+            </div>
           </div>
-          <div class="item" id="item6">
+          <div id="item6">
+            <div class="item">
             <div class="img"><img src="assets/images/nazo2-2.png" alt="謎2_2"></div>
             <div class="comment">
               なぞなぞなぞなぞなぞなぞなぞなぞ<br>
               なぞなぞなぞなぞ
             </div>
+            </div>
           </div>
-          <div class="item" id="item7">
+          <div id="item7">
+            <div class="item">
             <div class="img"><img src="assets/images/nazo2-3.png" alt="謎2_3"></div>
             <div class="comment">
               なぞなぞなぞなぞなぞなぞなぞなぞ<br>
               なぞなぞなぞなぞ
             </div>
+            </div>
           </div>
-          <div class="item" id="item8">
+          <div id="item8">
+            <div class="item">
             <div class="img"><img src="assets/images/nazo2-4.png" alt="謎2_4"></div>
             <div class="comment">
               なぞなぞなぞなぞなぞなぞなぞなぞ<br>
               なぞなぞなぞなぞ
             </div>
+            </div>
           </div>
-          <div class="item" id="item9">
+          <div id="item9">
+            <div class="item">
             <div class="img"><img src="assets/images/kagihakken.png" alt="封印の箱の鍵"></div>
             <div class="comment">
               封印の箱の鍵。<br>
               押し入れの奥に隠してあった。
+            </div>
             </div>
           </div>
 
