@@ -32,7 +32,9 @@ const app = Vue.createApp({
     nextStage(stage) {
       this.next[stage] = true;
     },
-
+    hideStage(stage) {
+      this.next[stage] = false;
+    },
     openTab(name) {
       console.log(this.tab.market)
       if (!this.tab[name]) {
@@ -97,6 +99,11 @@ const app = Vue.createApp({
         this.closeTab("market");
         this.nextStage("stage2")
       }
+    },
+    re_am_oder() {
+      location.href = '#oderButton'
+      window.opener.close();
+      this.am_oder()
     },
     allClose() {
       this.closeTab("main" + this.st);
