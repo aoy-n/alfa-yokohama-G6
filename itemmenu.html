@@ -92,7 +92,8 @@
     }
 
     .mailBody {
-      font-size: 20px;
+      width: 100%;
+      height: 100%;
     }
 
     .item {
@@ -141,6 +142,13 @@
     const mailAllCnt = 5;//暫定
     const personAllCnt = 5;//暫定
     const itemAllCnt = 9;//暫定
+    const tytle = {
+      "friend1": "やぁ久しぶり",
+      "am": "ご注文承りました"
+    }
+
+
+
 
 
     function setStorage(key, value) {
@@ -180,17 +188,38 @@
         hide("item" + i)
       }
     }
-    function nextMail(n) {
-      for (let i = 1; i <= n; i++) {
-        show("mail" + i)
+    function nextMail() {
+      const tytleMother = document.getElementById("mailList")
+      const bodyMother = document.getElementById("mail")
+      removeAllChild(tytleMother)
+      removeAllChild(bodyMother)
+      let mails = getStorage("mailList")
+
+      console.log(mails)
+      if (!mails) { mails = "" }
+      mails = mails.split(',')
+      let i = 0
+      for (mail of mails) {
+        if(mail =="null"||mail =="undefined"){continue;}
+        console.log(mail)
+        i++
+        const tytleObj = `<div class="mailTytle" id="mail${i}" targetId=sectionMail${i}>${tytle[mail]}</div>`
+        const bodyObj = `<object class="mailBody" id="sectionMail${i}" data="${mail}.html" type="text/html">`
+        tytleMother.appendChild(createElementFromHTML(tytleObj))
+        bodyMother.appendChild(createElementFromHTML(bodyObj))
+
       }
-      for (let i = n + 1; i <= itemAllCnt; i++) {
-        hide("mail" + i)
+      setEvent("mailTytle", "click", onclickFunction, openMail)
+    }
+    function createElementFromHTML(html) {
+      const tempEl = document.createElement('div');
+      tempEl.innerHTML = html;
+      return tempEl.firstElementChild;
+    }
+    function removeAllChild(element) {
+      while (element.firstChild) {
+        element.removeChild(element.firstChild);
       }
-
-      //要改良
-
-
     }
     function openMail(n) {
       for (let i = 1; i <= mailAllCnt; i++) {
@@ -210,7 +239,7 @@
       if (!i) { i = 0 };
       nextItem(Number(i));
 
-      nextMail(3);
+      nextMail();
       openMail(0);
     }
 
@@ -242,7 +271,6 @@
       next(0);
       renew();
       setEvent("menu", "click", onclickFunction, next)
-      setEvent("mailTytle", "click", onclickFunction, openMail)
       setEvent("img", "click", showImg)
     }
 
@@ -279,19 +307,19 @@
           </div>
           <div id="person1">
             <div class="person">
-            <div class="img">
-              <img src="enigma1_2.png" alt="謎1_2">
-            </div>
-            <div class="comment">
-              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
-              なぞなぞなぞなぞ
-            </div>
+              <div class="img">
+                <img src="enigma1_2.png" alt="謎1_2">
+              </div>
+              <div class="comment">
+                なぞなぞなぞなぞなぞなぞなぞなぞ<br>
+                なぞなぞなぞなぞ
+              </div>
             </div>
           </div>
 
-          
-          
-          
+
+
+
         </div>
 
       </section>
@@ -303,96 +331,96 @@
           </div>
           <div id="item1">
             <div class="item">
-            <div class="img">
-              <img src="assets/images/nazo1-1.png" alt="謎1_1">
-            </div>
-            <div class="comment">
-              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
-              なぞなぞなぞなぞ
-            </div>
+              <div class="img">
+                <img src="assets/images/nazo1-1.png" alt="謎1_1">
+              </div>
+              <div class="comment">
+                なぞなぞなぞなぞなぞなぞなぞなぞ<br>
+                なぞなぞなぞなぞ
+              </div>
             </div>
           </div>
 
 
           <div id="item2">
             <div class="item">
-            <div class="img">
-              <img src="assets/images/nazo1-2.png" alt="謎1_2">
-            </div>
-            <div class="comment">
-              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
-              なぞなぞなぞなぞ
-            </div>
+              <div class="img">
+                <img src="assets/images/nazo1-2.png" alt="謎1_2">
+              </div>
+              <div class="comment">
+                なぞなぞなぞなぞなぞなぞなぞなぞ<br>
+                なぞなぞなぞなぞ
+              </div>
             </div>
           </div>
           <div id="item3">
             <div class="item">
-            <div class="img">
-              <img src="assets/images/kinko.png" alt="封印の箱">
-            </div>
-            <div class="comment">
-              スマホを封印することができる不思議な箱。<br>
-              かなり頑丈で、とても壊せそうにないらしい。
-            </div>
+              <div class="img">
+                <img src="assets/images/kinko.png" alt="封印の箱">
+              </div>
+              <div class="comment">
+                スマホを封印することができる不思議な箱。<br>
+                かなり頑丈で、とても壊せそうにないらしい。
+              </div>
             </div>
           </div>
           <div id="item4">
             <div class="item">
-            <div class="img">
-              <img src="assets/images/nazo2-0.png" alt="謎2_0">
-            </div>
-            <div class="comment">
-              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
-              なぞなぞなぞなぞ
-            </div>
+              <div class="img">
+                <img src="assets/images/nazo2-0.png" alt="謎2_0">
+              </div>
+              <div class="comment">
+                なぞなぞなぞなぞなぞなぞなぞなぞ<br>
+                なぞなぞなぞなぞ
+              </div>
             </div>
           </div>
           <div id="item5">
             <div class="item">
-            <div class="img">
-              <img src="assets/images/nazo2-1.png" alt="謎2_1">
-            </div>
-            <div class="comment">
-              なぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞ
-              なぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞ
-              なぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞ
-            </div>
+              <div class="img">
+                <img src="assets/images/nazo2-1.png" alt="謎2_1">
+              </div>
+              <div class="comment">
+                なぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞ
+                なぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞ
+                なぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞなぞ
+              </div>
             </div>
           </div>
           <div id="item6">
             <div class="item">
-            <div class="img"><img src="assets/images/nazo2-2.png" alt="謎2_2"></div>
-            <div class="comment">
-              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
-              なぞなぞなぞなぞ
-            </div>
+              <div class="img"><img src="assets/images/nazo2-2.png" alt="謎2_2"></div>
+              <div class="comment">
+                なぞなぞなぞなぞなぞなぞなぞなぞ<br>
+                なぞなぞなぞなぞ
+              </div>
             </div>
           </div>
           <div id="item7">
             <div class="item">
-            <div class="img"><img src="assets/images/nazo2-3.png" alt="謎2_3"></div>
-            <div class="comment">
-              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
-              なぞなぞなぞなぞ
-            </div>
+              <div class="img"><img src="assets/images/nazo2-3.png" alt="謎2_3"></div>
+              <div class="comment">
+                なぞなぞなぞなぞなぞなぞなぞなぞ<br>
+                なぞなぞなぞなぞ
+              </div>
             </div>
           </div>
           <div id="item8">
             <div class="item">
-            <div class="img"><img src="assets/images/nazo2-4.png" alt="謎2_4"></div>
-            <div class="comment">
-              なぞなぞなぞなぞなぞなぞなぞなぞ<br>
-              なぞなぞなぞなぞ
-            </div>
+              <div class="img"><img src="assets/images/nazo2-4.png" alt="謎2_4"></div>
+              <div class="comment">
+                なぞなぞなぞなぞなぞなぞなぞなぞ<br>
+                なぞなぞなぞなぞ
+              </div>
             </div>
           </div>
           <div id="item9">
             <div class="item">
-            <div class="img"><img src="assets/images/kagihakken.png" alt="封印の箱の鍵"></div>
-            <div class="comment">
-              封印の箱の鍵。<br>
-              押し入れの奥に隠してあった。
-            </div>
+              <div class="img"><img src="assets/images/kagihakken.png" alt="封印の箱の鍵"></div>
+              <div class="comment">
+                封印の箱の鍵。<br>
+                押し入れの奥に隠してあった。
+              </div>
             </div>
           </div>
 
@@ -406,34 +434,12 @@
       <section class="content" id="section3">
         <div style="border-bottom: 2px solid rgb(0, 0, 0);height: 8%;">
           届いたメールが保管されています。<br>
-          
+
         </div>
         <div style="display: flex;height: 89%;">
           <section id="mailList">
-            <div class="mailTytle" id="mail1" targetId=sectionMail1>メール1通目</div>
-            <div class="mailTytle" id="mail2" targetId=sectionMail2>メール2通目</div>
-            <div class="mailTytle" id="mail3" targetId=sectionMail3>メール3通目</div>
-            <div class="mailTytle" id="mail4" targetId=sectionMail4>メール4通目</div>
-            <div class="mailTytle" id="mail5" targetId=sectionMail5>メール5通目</div>
-            <div class="mailTytle" id="mail1" targetId=sectionMail1>メール1通目</div>
-            <div class="mailTytle" id="mail2" targetId=sectionMail2>メール2通目</div>
-            <div class="mailTytle" id="mail3" targetId=sectionMail3>メール3通目</div>
-            <div class="mailTytle" id="mail4" targetId=sectionMail4>メール4通目</div>
-            <div class="mailTytle" id="mail5" targetId=sectionMail5>メール5通目</div>
-            <div class="mailTytle" id="mail1" targetId=sectionMail1>メール1通目</div>
-            <div class="mailTytle" id="mail2" targetId=sectionMail2>メール2通目</div>
-            <div class="mailTytle" id="mail3" targetId=sectionMail3>メール3通目</div>
-            <div class="mailTytle" id="mail4" targetId=sectionMail4>メール4通目</div>
-            <div class="mailTytle" id="mail5" targetId=sectionMail5>メール5通目</div>
           </section>
           <section id="mail">
-
-            <section class="mailBody" id="sectionMail1">メール1</section>
-            <section class="mailBody" id="sectionMail2">メール2</section>
-            <section class="mailBody" id="sectionMail3">メール3</section>
-            <section class="mailBody" id="sectionMail4">メール4</section>
-            <section class="mailBody" id="sectionMail5">メール5</section>
-
           </section>
         </div>
       </section>
