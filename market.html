@@ -107,17 +107,21 @@
         if (i == n) { show("step" + i) } else { hide("step" + i) }
       }
     }
-    function oder() {
+    function order() {
       if(document.getElementById("select").value == "平安京"){
         setStorage("ordered", true);
-        setStorage("mailList", getStorage("mailList")+",am");
+        let ml = getStorage("mailList")
+        if(!ml){ml= "friend0"}
+        ml += ",am"
+        setStorage("mailList", ml);
+
         next(3);
       }else{
         window.alert("必須項目を選択してください")
       }
     }
     function closeThisTab() {
-      window.opener.vm.am_odered();
+      window.opener.vm.am_ordered();
     }
   </script>
 </head>
@@ -156,7 +160,7 @@
 <br>安心安全信頼の林檎社製！
 <br>超高性能！バッテリー超長持ち！超キレイに撮れるカメラ！
 <br>この商品を購入すると、幸福の運気が訪れます！
-<br>ご購入された方からは、「かわいい彼女ができました！」「ステキな彼氏ができました！」「宝くじに当たりました！」など嬉しいご報告を受けています！
+<br>ご購入された方からは、「かわいい彼女ができました！」「かっこいい彼氏ができました！」「宝くじに当たりました！」など嬉しいご報告を受けています！
 <br>さあ貴方も一緒にステキな毎日を過ごしませんか？
           </p>
         </div>
@@ -198,7 +202,7 @@
           </div>
           <br>
           <br>
-          <button onclick="oder()">注文</button>
+          <button onclick="order()">注文</button>
         </div>
       </div>
       </section>
