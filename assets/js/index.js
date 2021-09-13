@@ -94,6 +94,9 @@ const app = Vue.createApp({
         this.nextStage("stage2")
       }
     },
+    focusMain() {
+      this.tab["main" + this.st].focus();
+    },
     allClose() {
       this.closeTab("main" + this.st);
       this.closeTab("itemmenu");
