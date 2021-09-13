@@ -12,6 +12,22 @@
       document.getElementById('loading').style.display = 'none';
       document.getElementById('loaded').style.display = 'block';
     }, false);
+    function reset() {
+      const res = window.confirm("進行度をリセットしますか？");
+      if (res == true) {
+        localStorage.removeItem("ordered")
+        localStorage.removeItem("stage")
+        localStorage.removeItem("isFinished")
+        localStorage.removeItem("name")
+        localStorage.removeItem("person")
+        localStorage.removeItem("item")
+        localStorage.removeItem("mailList")
+        window.alert("進行度をリセットしました。")
+      }
+      else {
+        alert("キャンセル");
+      }
+    }
   </script>
 </head>
 <body>
@@ -26,6 +42,7 @@
       <div class="header__logo"><img src="assets/images/Logo.png" alt="チームロゴ"></div>
       <div class="header__name">N・S高生制作サイト</div>
     </div>
+    <button style="display: inline;text-align: center;cursor: pointer;background-color: #c70000;color: #000000;box-shadow: 2px 2px 1px #666666;border: 2px solid #990000;  width: 10em;height: 2em;margin: 0; float: right;" onclick="reset()">進行度リセット</button>
   </header>
   <main class="main index-page">
     <!-- タイトルエリア　ここから -->
