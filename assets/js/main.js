@@ -153,11 +153,28 @@ const vm = app.mount('#stage')
 window.addEventListener('load', function() {
   document.getElementById('loading').style.display = 'none';
   document.getElementById('loaded').style.display = 'block';
+  setEvent("image__container", "click", showImg)
+  const elem = document.getElementById("plName");
+  elem.addEventListener("change", changeName);
+  const val = elem.value;
+  const elements = document.getElementsByClassName("you");
+  for (el of elements) {
+    el.innerText = val
+  };
+  localStorage.setItem("name", val)
 }, false);
 
 function showImg(e) {
-  const img = e.currentTarget.childNodes[1]
+  const img = e.currentTarget.childNodes[0]
+  console.log(e.currentTarget.childNodes)
   window.open(img.src, '_blank')
+}
+function changeName(e) {
+  const elements = document.getElementsByClassName("you");
+  for (el of elements) {
+    el.innerText = e.target.value
+  };
+  localStorage.setItem("name", e.target.value)
 }
 
 function setEvent(cl, eve, func, call) {
@@ -169,5 +186,3 @@ function setEvent(cl, eve, func, call) {
     });
   };
 }
-
-setEvent("image__container", "click", showImg)
