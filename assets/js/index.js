@@ -84,10 +84,10 @@ const app = Vue.createApp({
         window.location.href = 'final.html';
       }
     },
-    am_oder() {
+    am_order() {
       this.openTab("market")
     },
-    am_odered() {
+    am_ordered() {
       if(this.getStorage("ordered") == "true"){
         this.closeTab("market");
         this.hideStage("stage1");
@@ -108,7 +108,12 @@ const app = Vue.createApp({
 const vm = app.mount('body')
 window.vm = vm
 
-window.addEventListener('beforeunload', vm.allClose(), false);
+window.addEventListener('beforeunload', (event) => {
+  event.preventDefault();
+  event.returnValue = '';
+});
+window.addEventListener('unload', vm.allClose, false);
+
 window.addEventListener('load', function () {
   if (vm.getStorage("ordered") == "true") {
     vm.hideStage("stage1");
