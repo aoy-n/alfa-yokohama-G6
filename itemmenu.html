@@ -272,6 +272,7 @@
       renew();
       setEvent("menu", "click", onclickFunction, next)
       setEvent("img", "click", showImg)
+      window.opener.vm.focusMain()
       document.getElementById('loading').style.display = 'none';
       document.getElementById('loaded').style.display = 'block';
     }
