@@ -148,13 +148,8 @@ app.component('answer-input', {
   }
 })
 
-app.mount('#stage')
+const vm = app.mount('#stage')
 
-function hoge(){
-  //
-}
-
-window.addEventListener('beforeunload', hoge, false);
 window.addEventListener('load', function() {
   document.getElementById('loading').style.display = 'none';
   document.getElementById('loaded').style.display = 'block';
