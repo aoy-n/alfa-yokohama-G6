@@ -110,6 +110,7 @@ const app = Vue.createApp({
     },
     getItem(type,n){
       this.setStorage(type,n)
+      window.alert("アイテムを入手！情報管理ウィンドウで確認しよう！")
     },
   }
 })
