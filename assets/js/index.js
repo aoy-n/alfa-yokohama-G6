@@ -80,7 +80,6 @@ const app = Vue.createApp({
         this.hideStage("stage3");
       
         this.setStorage("mailList", this.getStorage("mailList")+",friend"+this.st);
-
         window.removeEventListener('beforeunload', this.allClose());
         window.location.href = 'final.html';
       }
@@ -91,13 +90,9 @@ const app = Vue.createApp({
     am_odered() {
       if(this.getStorage("ordered") == "true"){
         this.closeTab("market");
+        this.hideStage("stage1");
         this.nextStage("stage2")
       }
-    },
-    re_am_oder() {
-      location.href = '#oderButton'
-      window.opener.close();
-      this.am_oder()
     },
     allClose() {
       this.closeTab("main" + this.st);
