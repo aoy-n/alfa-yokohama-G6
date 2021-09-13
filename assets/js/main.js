@@ -163,6 +163,9 @@ window.addEventListener('load', function() {
     el.innerText = val
   };
   localStorage.setItem("name", val)
+  
+  window.focus();
+  
 }, false);
 
 function showImg(e) {
