@@ -84,6 +84,22 @@ button {
   height: 55px;
 }
 
+.itemButton {
+  font-size: 1.5em;
+  text-align: center;
+  background-color: #31ec89;
+  color: #ffffff;
+  transition: .1s;
+  box-shadow: 2px 2px 1px #666666;
+  border: 2px solid #990000;
+}
+
+.itemButton:hover {
+  box-shadow: none;
+  color: #31ec89;
+  background-color: #ffffff;
+}
+
 /*******************
 * Layout
 *******************/
