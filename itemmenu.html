@@ -272,6 +272,8 @@
       renew();
       setEvent("menu", "click", onclickFunction, next)
       setEvent("img", "click", showImg)
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('loaded').style.display = 'block';
     }
 
     window.onload = onlF
@@ -279,6 +281,11 @@
 </head>
 
 <body>
+  <section id="loading">
+    <h1 Align="center" style="height:300px;line-height:300px;">now loading...</h1>
+  </section>
+  <section id="loaded" style="display: none;">
+
   <div>
     <span style="font-size: 1em;font-weight: bold;">オンラインリアル脱出ゲーム『平安京からの脱出』</span>
     <span style="font-size: 2em;font-weight: bold;">情報管理ツール</span>
@@ -459,6 +466,7 @@
       </section>
     </main>
   </div>
+  </section>
 </body>
 
 </html>
