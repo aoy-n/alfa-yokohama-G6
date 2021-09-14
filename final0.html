@@ -1,0 +1,122 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>平安京からの脱出 │ Project N</title>
+  <link rel="stylesheet" href="assets/css/normalize.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+    let tab;
+    function openItemmenu (){
+      if (!tab) {
+        tab = window.open("itemmenu.html", '_blank');
+      } else if (tab.closed) {
+        tab = window.open("itemmenu.html", '_blank');
+      } else {
+        tab.focus()
+      }
+    }
+    function re_am_order(){
+      if(tab){tab.close()}
+      window.location.href = 'main_index.html#orderButton';
+    }
+  </script>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header__logo"><img src="assets/images/Logo.png" alt="チームロゴ"></div>
+      <div class="header__name">N・S高生制作サイト</div>
+    </div>
+  </header>
+  <main class="main final-page">
+    <!-- タイトルエリア　ここから -->
+    <h1 class="main-title"><img src="assets/images/main-image.png" alt="平安京からの脱出"></h1>
+    <!-- タイトルエリア　ここまで -->
+    <section class="section">
+      <div class="container">
+        <div class="box bg-color--subcolor">
+          <h2 class="section-title--border">Bad End</h2>
+          <p class="text-center">
+            通話が切れた。<br>
+            彼は封印に成功しただろうか。
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+<!--        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+          <figure class="image__container">
+             <img src="assets/images/stage.png" alt="">
+          </figure>
+
+  YouTube貼り付け
+            <div class="youtube__container">
+              <div class="youtube">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/IRyJe-0Uie0?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+Youtube貼り付けここまで-->
+      </div>
+        <p class="text-center">
+          
+          <br>ふと気になって、通販サイトを確認してみる。届け先は……
+          <br>まだ、平安京なようだ。
+          <br>ということは。
+          <br>
+          <br>もう一度、平安京に送りつける事が、できるのではないか…？
+          <br>
+          <br><span style="font-size: 200px;">〜Fin〜</span>
+          <br>
+          <br>
+    
+        </p>
+      </div>
+    </section>
+    <section class="section bg-color--keycolor">
+      <div class="container">
+        <h2 class="section-title">遊んでくれてありがとう！</h2>
+        <p class="font-eng text-center">Special Thanks</p>
+        <div class="row">
+          <div class="column">
+            <div class="card">
+              <h3 class="card__title">リアル脱出ゲームとは</h3>
+              <p class="card__content">2004年に発表されたネットで爆発的に盛り上がった「脱出ゲーム」を、そのフォーマットそのままに現実世界に移し替えた大胆な遊びが「リアル脱出ゲーム」。マンションの1室や廃校、廃病院、そして東京ドームや六本木ヒルズなど、様々な場所で開催され、2007年に初開催して以降、現在までで累計820万人以上を動員。日本のみならず上海、台湾、シンガポールやサンフランシスコなど全世界で参加者を興奮の渦に巻き込み、男女問わずあらゆる世代を取り込む、今大注目の体験型エンターテインメント。</p>
+            </div>
+          </div>
+          <div class="column">
+            <div class="card">
+              <h3 class="card__title">このゲームの企画者</h3>
+              <p class="card__content">企画・制作メンバー<br>
+                横浜キャンパスG-6チーム 平安京からの脱出<br>
+                ・青山 耕介 ・飯島 帆乃花 ・杉山 あやの ・野上 七世</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="section">
+      <button onclick="re_am_order()" class="btn">もう一度注文する</button>
+    </div>
+  </main>
+  <footer class="footer section bg-color--gray">
+    <div class="container">
+        <p class="text-center">授業主催： N・S高<br>協力：株式会社SCRAP<br>企画制作：N・S高生</p>
+        <p class="text-center">「リアル脱出ゲーム」は株式会社SCRAPの登録商標です。</p>
+        <p class="text-center">株式会社SCRAPとN・S高で実施した授業「リアル脱出ゲームの作り方」の一環で<br>生徒が制作したものであり、SCRAPが主催/公認するものではありません。</p>
+    </div>
+  </footer>
+</body>
+</html>
