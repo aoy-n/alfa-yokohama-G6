@@ -57,17 +57,15 @@ const app = Vue.createApp({
       if (!this.st) {this.setStorage("stage",1);this.st=1};
 
       console.log("stage:" + this.st)
-      const main = this.openTab("main" + this.st);
       this.openTab("itemmenu");
+      this.openTab("main" + this.st);
       this.hideStage("stage1")
       this.hideStage("stage2")
       this.nextStage("stage3")
-      main.focus();
     },
     reStart() {
-      const main = this.openTab("main" + this.st);
       this.openTab("itemmenu");
-      main.focus();
+      this.openTab("main" + this.st);
     },
     nextFinish() {
       if (this.getStorage("isFinished") == "true") {
@@ -83,6 +81,15 @@ const app = Vue.createApp({
         window.removeEventListener('beforeunload', this.allClose());
         window.location.href = 'final.html';
       }
+    },
+    badEnd() {
+        this.setStorage("ordered", false)
+        this.closeTab("main" + this.st);
+        this.hideStage("stage1");
+        this.hideStage("stage2");
+        this.hideStage("stage3");
+        window.removeEventListener('beforeunload', this.allClose());
+        window.location.href = 'final0.html';
     },
     am_order() {
       this.openTab("market")
