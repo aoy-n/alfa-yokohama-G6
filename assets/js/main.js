@@ -18,18 +18,14 @@ const app = Vue.createApp({
       */
       correctAnswer: {
         stage1: {
-          q1: 'あああ',
+          q1: 'する',
         },
         stage2: {
-          q1: 'いいい',
-          // q2: 'えええ',
-          // q3: 'おおお'
+          q1: 'い',
         },
         stage3: {
-          q1: 'ううう',
-          // q2: 'かかか',
-          // q3: 'ききき',
-        }
+          q1: 'おしいれ',
+        },
       },
 
       /* それぞれの問題が正解かどうか
@@ -64,6 +60,7 @@ const app = Vue.createApp({
       next: {
         stage1: false,
         stage2: false,
+        stage3: false,
       },
     }
   },
@@ -93,10 +90,7 @@ const app = Vue.createApp({
       if ( this.clear[stage] === true && final === 'final' ) {
         this.setStorage("isFinished",true)
         
-        window.removeEventListener('beforeunload', hoge, false);
-        window.opener.focus()
         window.opener.vm.nextFinish()
-        
         
       }
     },
@@ -107,10 +101,13 @@ const app = Vue.createApp({
     nextStage(stage) {
       this.clear[stage] = false;
       this.next[stage] = true;
+      
+      setTimeout(onNewPage,100)
+      
     },
     getItem(type,n){
       this.setStorage(type,n)
-      window.alert("アイテムを入手！情報管理ウィンドウで確認しよう！")
+      window.alert("アイテムを入手！情報管理ウィンドウで確認できるようになった。")
     },
   }
 })
@@ -122,7 +119,7 @@ app.component('answer-input', {
     return {
       /* 送信ボタン上下に表示されるメッセージ */
       okMessage: '正解！',
-      ngMessage: 'そのキーワードは違うようだぞ！？',
+      ngMessage: '違っているようですね…',
       message: '',
       inputAnswer: '',
     }
@@ -155,22 +152,11 @@ window.addEventListener('load', function() {
   document.getElementById('loading').style.display = 'none';
   document.getElementById('loaded').style.display = 'block';
   setEvent("image__container", "click", showImg)
-  const elem = document.getElementById("plName");
-  elem.addEventListener("change", changeName);
-  const val = elem.value;
-  const elements = document.getElementsByClassName("you");
-  for (el of elements) {
-    el.innerText = val
-  };
-  localStorage.setItem("name", val)
-  
-  window.focus();
-  
+  localStorage.setItem("name", setNameEvent())  
 }, false);
 
 function showImg(e) {
   const img = e.currentTarget.childNodes[0]
-  console.log(e.currentTarget.childNodes)
   window.open(img.src, '_blank')
 }
 function changeName(e) {
@@ -189,4 +175,22 @@ function setEvent(cl, eve, func, call) {
       callFunc: call
     });
   };
+}
+
+function setNameEvent(){
+  const elem = document.getElementById("plName");
+  elem.addEventListener("change", changeName);
+  const val = elem.value;
+  const elements = document.getElementsByClassName("you");
+  for (el of elements) {
+    el.innerText = val
+  };
+  return val;
+}
+function onNewPage(){
+  setEvent("image__container", "click", showImg)
+  setNameEvent()
+}
+function badEnd(){
+  window.opener.vm.badEnd()
 }
