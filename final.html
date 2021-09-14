@@ -8,17 +8,18 @@
   <link rel="stylesheet" href="assets/css/normalize.css">
   <link rel="stylesheet" href="assets/css/style.css">
     <script>
-    let tab ={};
-    function openTab(name) {
-      if (!tab[name]) {
-        tab[name] = window.open(name + ".html", '_blank');
-      } else if (tab[name].closed) {
-        tab[name] = window.open(name + ".html", '_blank');
+    let tab;
+    function openItemmenu (){
+      if (!tab) {
+        tab = window.open("itemmenu.html", '_blank');
+      } else if (tab.closed) {
+        tab = window.open("itemmenu.html", '_blank');
       } else {
-        tab[name].focus()
+        tab.focus()
       }
     }
     function re_am_order(){
+      if(tab){tab.close()}
       window.location.href = 'main_index.html#orderButton';
     }
   </script>
@@ -67,18 +68,16 @@ Youtube貼り付けここまで-->
         <p class="text-center">
           
           <br>友人からメールが来ていたようなので確認しておく。
-          <br><input type="button" onclick="openTab('itemmenu')" value="ウィンドウ再展開"></button>
-          <br>ストーリー
-          <br>ストーリー
-          <br>通販サイトを確認してみる。届け先は……
+          <br><input type="button" onclick="openItemmenu()" value="ウィンドウ再展開"></button>
+          <br><br><br>
+          <br>ふと気になって、通販サイトを確認してみる。届け先は……
           <br>まだ、平安京なようだ。
           <br>ということは。
+          <br>
           <br>もう一度、平安京に送りつける事が、できるのではないか…？
           <br>
           <br><span style="font-size: 200px;">〜Fin〜</span>
           <br>
-          <br>
-          <br><button onclick="re_am_order()" class="btn">購入ページへ</button>
           <br>
     
         </p>
@@ -106,6 +105,9 @@ Youtube貼り付けここまで-->
         </div>
       </div>
     </section>
+    <div class="section">
+      <button onclick="re_am_order()" class="btn">もう一度注文する</button>
+    </div>
   </main>
   <footer class="footer section bg-color--gray">
     <div class="container">
