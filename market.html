@@ -108,7 +108,10 @@
       }
     }
     function order() {
-      if(document.getElementById("select").value == "平安京"){
+      let objs = document.getElementsByClassName("select");
+      console.log(objs)
+      
+      if(objs[0].value&&objs[1].value&&objs[2].value){
         setStorage("ordered", true);
         let ml = getStorage("mailList")
         if(!ml){ml= "friend0"}
@@ -173,7 +176,7 @@
             </div>
             <div class="src">
               <label>色</label><br>
-              <select style="width: 8em;">
+              <select class="select"　style="width: 8em;">
                 <option selected>black</option>
                 <option>white</option>
                 <option>red</option>
@@ -183,7 +186,7 @@
             </div>
             <div class="src">
               <label>決済方法</label><br>
-              <select style="width: 8em;">
+              <select class="select"　style="width: 8em;">
                 <option selected>クレジット</option>
                 <option>コンビニ決済</option>
                 <option>商品券</option>
@@ -193,7 +196,7 @@
             </div>
             <div class="src">
               <label>お届け先</label><br>
-              <select id="select" style="width: 8em;">
+              <select class="select"　id="select" style="width: 8em;">
                 <option selected>------</option>
                 <option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option><option>平安京</option>
               </select>
@@ -204,6 +207,10 @@
           <br>
           <button onclick="order()">注文</button>
         </div>
+        <br><br><br><br><br><br>
+        <h2>※この物語はフィクションです</h2>
+        <h3>実際の企業/団体/人物/時代とは一切関係ありません。</h3>
+        <br>
       </div>
       </section>
       <section id="step3">
