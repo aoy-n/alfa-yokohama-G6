@@ -78,7 +78,7 @@ const app = Vue.createApp({
         this.hideStage("stage3");
       
         this.setStorage("mailList", this.getStorage("mailList")+",friend"+this.st);
-        window.removeEventListener('beforeunload', this.allClose());
+        window.removeEventListener('beforeunload', def);
         window.location.href = 'final.html';
       }
     },
@@ -88,7 +88,7 @@ const app = Vue.createApp({
         this.hideStage("stage1");
         this.hideStage("stage2");
         this.hideStage("stage3");
-        window.removeEventListener('beforeunload', this.allClose());
+        window.removeEventListener('beforeunload', def);
         window.location.href = 'final0.html';
     },
     am_order() {
@@ -114,11 +114,11 @@ const app = Vue.createApp({
 
 const vm = app.mount('body')
 window.vm = vm
-
-window.addEventListener('beforeunload', (event) => {
+function def(event){
   event.preventDefault();
   event.returnValue = '';
-});
+}
+window.addEventListener('beforeunload', def);
 window.addEventListener('unload', vm.allClose, false);
 
 window.addEventListener('load', function () {
