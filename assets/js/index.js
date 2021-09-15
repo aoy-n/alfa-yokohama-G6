@@ -52,26 +52,23 @@ const app = Vue.createApp({
       if (this.tab[name]) {if (!this.tab[name].closed) {this.tab[name].close();};};
     },
     nextStart() {
-      console.log("start")
-      this.st = this.getStorage("stage")
+      this.st = this.getStorage("stage");
       if (!this.st) {this.setStorage("stage",1);this.st=1};
-
-      console.log("stage:" + this.st)
-      this.openTab("itemmenu");
+      
       this.openTab("main" + this.st);
-      this.hideStage("stage1")
-      this.hideStage("stage2")
-      this.nextStage("stage3")
+      this.openTab("itemmenu");
+      this.hideStage("stage1");
+      this.hideStage("stage2");
+      this.nextStage("stage3");
     },
     reStart() {
-      this.openTab("itemmenu");
       this.openTab("main" + this.st);
+      this.openTab("itemmenu");
     },
     nextFinish() {
       if (this.getStorage("isFinished") == "true") {
-        this.setStorage("isFinished", false)
-        console.log("finish")
-        this.setStorage("ordered", false)
+        this.setStorage("isFinished", false);
+        this.setStorage("ordered", false);
         this.closeTab("main" + this.st);
         this.hideStage("stage1");
         this.hideStage("stage2");
