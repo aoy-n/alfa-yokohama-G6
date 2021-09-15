@@ -340,8 +340,19 @@
               <div class="clear-message">
                 <div class="clear-message__title">STAGE：１</div>
                 <div class="clear-message__content">
-                  あ、ありがとうございますっ！<br>
-                  では、善は急げ！大内裏へ向かいましょう！
+                  <div style="display: flex;">
+                    <div style="flex: 1;"></div>
+                    <p style="flex: 6;">
+                      <br>
+                      あ、ありがとうございますっ！<br><br>
+                      では、善は急げ！大内裏へ向かいましょう！<br>
+                    </p>
+                    <figure class="image__container" style="flex: 2 ; width: 100%; padding: 0;">
+                      <img class="img" src="assets/images/onmyojikun2.png">
+                    </figure>
+                    <div style="flex: 1;"></div>
+                  </div>
+                </div>
                 <button v-on:click="nextStage('stage1');getItem('person',2);" onclick="location.href='#sectionStage2'"
                   class="clear-message__btn btn">次のステージへ<svg class="btn__arrow">
                     <use xlink:href="#arrow"></use>
@@ -586,8 +597,20 @@
               <div class="clear-message">
                 <div class="clear-message__title">STAGE：2　クリア！</div>
                 <div class="clear-message__content">
-                  なるほど、その道なら見つからなさそうですね！<br>
-                  先ほどあちらの役人が移動したので、今なら忍び込めるハズです！</div>
+                  <div style="display: flex;">
+                    <div style="flex: 1;"></div>
+                    <p style="flex: 6;">
+                      <br>
+                      なるほど、その道なら見つからなさそうですね！<br><br>
+                      先ほどあちらの役人が移動したので、<br>
+                      今なら忍び込めるハズです！
+                    </p>
+                    <figure class="image__container" style="flex: 2 ; width: 100%; padding: 0;">
+                      <img class="img" src="assets/images/onmyojikun3.png">
+                    </figure>
+                    <div style="flex: 1;"></div>
+                  </div>
+                </div>
                 <button v-on:click="nextStage('stage2');getItem('person',3);" onclick="location.href='#sectionStage3'"
                   class="clear-message__btn btn">次のステージへ<svg class="btn__arrow">
                     <use xlink:href="#arrow"></use>
@@ -723,15 +746,25 @@
               <div class="clear-message">
                 <div class="clear-message__title">STAGE：3　クリア！</div>
                 <div class="clear-message__content">
-                  なるほど！4つの謎の答えを並べて読むのでしたか！<br>
-                  おしいれ……押し入れですか。探してみます！
+                  <div style="display: flex;">
+                    <div style="flex: 1;"></div>
+                    <p style="flex: 6;">
+                      <br>
+                      なるほど！4つの謎の答えを並べて読むのでしたか！<br><br>
+                      おしいれ……押し入れですか。探してみます！
+                    </p>
+                    <figure class="image__container" style="flex: 2 ; width: 100%; padding: 0;">
+                      <img class="img" src="assets/images/onmyojikun2.png">
+                    </figure>
+                    <div style="flex: 1;"></div>
+                  </div>
+                </div>
                 <button v-on:click="nextStage('stage3');getItem('item',9);" onclick="location.href='#sectionStage4'"
                   class="clear-message__btn btn">次のステージへ<svg class="btn__arrow">
                     <use xlink:href="#arrow"></use>
                   </svg></button>
               </div>
             </div>
-
           </section>
           <!-- STAGE2クリア画面　ここまで -->
 
