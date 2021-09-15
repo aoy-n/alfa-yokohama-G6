@@ -30,92 +30,89 @@
     </section>
     <section id="loaded" style="display: none;">
 
-    <section class="section section--story" v-if="next['stage1']">
-      <div class="container">
-        <h2 class="section-title section-title--keycolor section-title--story">ストーリー</h2>
-        <div class="story">
-          <p class="text-center">
-            スマホでも買おう。
-          <!--<div class="story__note__outer bg-color--gray">
-            <ul class="story__note">
-              <li>今、これを読んだ生徒会メンバー以外を呼んではいけない</li>
-              <li>30分を超えるとS先生は出てこられない</li>
-            </ul>
-          </div>-->
+      <section class="section section--story" v-if="next['stage1']">
+        <div class="container">
+          <div id="storyContainer" class="text-center" style="font-size: 1.5em;">
+            <h2 class="section-title section-title--keycolor section-title--story">ストーリー</h2>
+            <br>新しいスマホが欲しい。
+            <br>
+            <br>このご時世だ。通販で購入しよう。
+            <br>
+            <br>
             <button id="orderButton" v-on:click="am_order()" class="btn">購入ページへ</button>
-          </p>
-        </div>
-      </div>
-    </section>
-    <!--<section class="section bg-color--gray">
-      <div class="container">
-        <h2 class="section-title">ゲーム開始前の準備</h2>
-        <p class="font-eng text-center">Are you ready for game?</p>
-        <!--
-          class名"row"内のclass名"column"が横並びになります。
-          改行する場合は以下のように追加してください。
-          <div class="row">
-            <div class="column">
-              ～ 内容 ～
-            </div>
-          </div>
-        -->
-        <!--<div class="row">
-          <div class="column">
-            <div class="card">
-              <h3 class="card__title">遊ぶ日時を決めよう！</h3>
-              <p class="card__content">前後の説明、解説をあわせ、想定所要時間は100分〜120分です。途中で中断することもできますが、お時間に余裕があるときにご参加ください。</p>
-            </div>
-          </div>
-          <div class="column">
-            <div class="card">
-              <h3 class="card__title">紙とペンを用意しよう！</h3>
-              <p class="card__content">メモをとるための紙と筆記用具をお手元にご準備ください。</p>
-            </div>
-          </div>
-          <div class="column">
-            <div class="card">
-              <h3 class="card__title">ブラウザのCookieとキャッシュを<br>削除しよう！</h3>
-              <p class="card__content">エラーが起きる原因となる恐れがありますので、必ずCookieとキャッシュを削除してからプレイを開始するようにしてください。</p>
-            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="section bg-color--keycolor">
-      <div class="container">
-        <h2 class="section-title">複数人での遊び方</h2>
-        <p class="font-eng text-center">Playing games with multiple players</p>
-        <div class="row">
-          <div class="column">
-            <div class="card">
-              <h3 class="card__title">コミュニケーションツール<br>を用意！</h3>
-              <p class="card__content">例：Zoom、LINE通話など<br>
-                カメラはオフにしたままでも参加は可能です。<br>
-                ただ、離れたところにいる仲間と同じ会場で謎解きをしている気持ちになれるので、カメラをオンにしてみんなでわいわいプレイをすることをお勧めします。</p>
+      </section>
+      <section class="section" v-if="next['stage2']">
+        <div class="container">    
+          <div id="storyContainer">
+            <h2 class="section-title section-title--keycolor section-title--story">ストーリー</h2>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>……
+            <br>…………
+            <br>
+            <br>注文してしまった…。
+            <br>
+            <br>スマホ、「平安京」に注文してしまった……。
+            <br>
+            <br>どうしてこうなった…？
+            <br>
+            <br>新しいスマホでも買おうと、密林のような某通信販売サイトを巡っていた。
+            <br>良さげなスマホを見つけたので注文しようとした。
+            <br>届け先「平安京」で注文してしまった。
+            <br>
+            <br>なぜか…？
+            <br>届け先設定の候補が、「平安京」のみだったから。
+            <br>
+            <br>……ダメだ。訳が分からない。
+            <br>
+            <br>
+            <br>とりあえず平安京についてググってみる。
+            <br>
+            <br><div class="wikibox">
+            Wikipedia
+            <br>平安京（へいあんきょう／たいらのみやこ）または平安城（へいあんじょう）は、794年（延暦13年）から日本の都であった都市。
+            <br>長岡京から遷都する地として山背国（山城国）愛宕・葛野の両郡にまたがる地が選ばれ、中国の洛陽城や長安城を模して建設された。
             </div>
-          </div>
-          <div class="column">
-            <div class="card">
-              <h3 class="card__title">イヤホンを使おう！</h3>
-              <p class="card__content">本ゲームでは、登場人物が会話する動画を見ながら謎解きをします。<br>
-                動画を見るときにイヤホンを使うと、動画の再生中も仲間と会話をしながらプレイができます。<br>
-                ※イヤホンを使用しない場合は、音声をマイクが拾ってしまわないように、動画の再生中は通話ツールのミュート機能をご利用ください。</p>
-            </div>
-          </div>
-          <div class="column">
-            <div class="card">
-              <h3 class="card__title">情報共有はしっかりと！</h3>
-              <p class="card__content">遠くにいる仲間と足並みを揃えて遊びましょう。<br>
-                動画で気になったところ、解けた謎の答えや思いついたことはなんでも共有しましょう！</p>
-            </div>
-          </div>
+            <br>
+            <br>京都あたりに存在した、昔の都市。時代はそのまま平安時代。今はもう存在していない事もしっかりと確認。
+            <br>
+            <br>
+            <br>注文したスマホはどうなるのだろうか。果たして発送されるのだろうか。
+            <br>そうだ。少々慌てたが、常識的に考えてあれは何かの表記ミスである筈だ。
+            <br>どうせ「お届け先が不明です」とかでKONOZAMAするのがオチだろう。
+            <br>心配ではあるが、気長に待つしかないだろう。
+            <br>
+            <br>
+            <br>数分後、通販サービスから連絡があった。「商品は無事お届けした」との事だ。
+            <br>これはどういうことだ。どこにお届けされたのだろうか。自分の所には来ていない。それはそうだ。住所なんて入力していない。なら…もし、あるとするなら…平安京なのか…？
+            <br>……そんなまさか。
+            <br>
+            <br>
+            <br>
+            <br>突如、通知が来た。
+            <br>
+            <br>某ビデオ通話サービスからだ。
+            <br>通話に招待されている、らしい。
+            <br>
+            <br>相手の番号は「 髯ｰ髯ｽ蟶ｫ螟ｪ驛察蟷ｳ螳我ｺｬ 」
+            <br>番号が文字化けしている…そんな事がありえるのか…？
+            <br>
+            <br>掛かってきた番号は、通販サービス登録してある番号だ。通販の連絡の直後、偶然とは思えない。
+            <br>一体誰が何の目的で掛けてきたのか。
+            <br>
+            <br>
+            <br>《　「 髯ｰ髯ｽ蟶ｫ螟ｪ驛察蟷ｳ螳我ｺｬ 」が通話を待機しています　》
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+          <div v-on:click="nextStart()" class="btn">通話を開始<svg class="btn__arrow"></svg></div>
         </div>
-      </div>
-    </section>-->
-    <section class="section" v-if="next['stage2']">
-      <div class="container">
-        <div v-on:click="nextStart()" class="btn">通話を開始<svg class="btn__arrow"></svg></div>
       </div>
     </section>
     <section class="section" v-if="next['stage3']">
