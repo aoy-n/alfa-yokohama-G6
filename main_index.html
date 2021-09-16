@@ -116,9 +116,23 @@
       </div>
     </section>
     <section class="section" v-if="next['stage3']">
-      <p>操作説明FAQ等</p>
       <div class="container">
-        <div v-on:click="reStart()" class="btn">ウィンドウ再展開<svg class="btn__arrow"></svg></div>
+        <div id="storyContainer" style="text-align: center;">
+          <h2 class="section-title section-title--keycolor section-title--story">ウィンドウについての説明</h2>
+          <br>このゲームは、ウィンドウ(タブ)を3つ使用します。
+          <br>
+          <br>・このウィンドウ
+          <br>・本編ウィンドウ
+          <br>・情報管理ツール
+          <br>
+          <br>の3つです。
+          <br>
+          <br>どれか一つでも開けていない場合、以下の「ウィンドウ再展開」ボタンから開いて下さい。
+          <br>もし開けない場合にはポップアップ許可を与えてから再度お試し下さい。
+          <br><div v-on:click="reStart()" class="btn">ウィンドウ再展開<svg class="btn__arrow"></svg></div>
+          <br>
+          <br>本編進行中にも、このウィンドウは閉じないで下さい。
+        </div>
       </div>
     </section>
     </section>
