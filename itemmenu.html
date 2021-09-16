@@ -209,14 +209,11 @@
       removeAllChild(tytleMother)
       removeAllChild(bodyMother)
       let mails = getStorage("mailList")
-
-      console.log(mails)
       if (!mails) { mails = "" }
       mails = mails.split(',')
       let i = 0
       for (mail of mails) {
         if (!mail) { continue; }
-        console.log(mail)
         i++
         const tytleObj = `<div class="mailTytle" id="mail${i}" targetId=sectionMail${i}>${tytle[mail]}</div>`
         const bodyObj = `<object class="mailBody" id="sectionMail${i}" data="${mail}.html" type="text/html">`
