@@ -179,6 +179,8 @@ window.addEventListener('load', function() {
   document.getElementById('loaded').style.display = 'block';
   setEvent("image__container", "click", showImg)
   localStorage.setItem("name", setNameEvent())  
+  localStorage.setItem("item", 0)  
+  localStorage.setItem("person", 0) 
 }, false);
 
 function showImg(e) {
