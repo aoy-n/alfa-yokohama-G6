@@ -52,9 +52,8 @@ const app = Vue.createApp({
       if (this.tab[name]) {if (!this.tab[name].closed) {this.tab[name].close();};};
     },
     nextStart() {
-      this.st = this.getStorage("stage");
-      if (!this.st) {this.setStorage("stage",1);this.st=1};
-      
+      if (!this.st) { this.st = this.getStorage("stage") };
+      if (!this.st) { this.setStorage("stage", 1); this.st = 1 };
       this.openTab("main" + this.st);
       this.openTab("itemmenu");
       this.hideStage("stage1");
@@ -76,7 +75,7 @@ const app = Vue.createApp({
       
         this.setStorage("mailList", this.getStorage("mailList")+",friend"+this.st);
         window.removeEventListener('beforeunload', def);
-        window.location.href = 'final.html';
+        window.location.href = 'final'+this.st+'.html';
       }
     },
     badEnd() {
@@ -88,14 +87,29 @@ const app = Vue.createApp({
         window.removeEventListener('beforeunload', def);
         window.location.href = 'final0.html';
     },
+    normalEnd() {
+        this.setStorage("ordered", false)
+        this.closeTab("main" + this.st);
+        this.hideStage("stage1");
+        this.hideStage("stage2");
+        this.hideStage("stage3");
+        window.removeEventListener('beforeunload', def);
+        window.location.href = 'final1.html';
+    },
     am_order() {
       this.openTab("market")
     },
     am_ordered() {
-      if(this.getStorage("ordered") == "true"){
+      if (this.getStorage("ordered") == "true") {
         this.closeTab("market");
         this.hideStage("stage1");
-        this.nextStage("stage2")
+        this.st = this.getStorage("stage")
+        if (!this.st) { this.setStorage("stage", 1); this.st = 1 };
+        if (this.st == 1) {
+          this.nextStage("stage2");
+        } else {
+          this.nextStage("stage2.5");
+        }
       }
     },
     focusMain() {
