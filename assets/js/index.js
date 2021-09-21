@@ -54,6 +54,8 @@ const app = Vue.createApp({
     nextStart() {
       if (!this.st) { this.st = this.getStorage("stage") };
       if (!this.st) { this.setStorage("stage", 1); this.st = 1 };
+      this.setStorage("item", 0)  
+      this.setStorage("person", 0) 
       this.openTab("main" + this.st);
       this.openTab("itemmenu");
       this.hideStage("stage1");
