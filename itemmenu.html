@@ -123,24 +123,20 @@
       padding: 1em;
     }
 
-
-
-
-
     .img {
       flex: 4;
       height: 100%;
 
     }
 
-
     .comment {
       flex: 6;
       height: 100%;
       text-align: left;
-      padding: 1em;
+      padding-right: 1em;
       padding-left: 2em;
       font-size: 1.5em;
+      overflow-y: scroll;
     }
 
     img {
@@ -154,15 +150,15 @@
 
     const sectionCnt = 3;
       let mailAllCnt = 0;
-    const personAllCnt = 5;//暫定
-    const itemAllCnt = 9;//暫定
-    
+    const personAllCnt = 6;//暫定
+    const itemAllCnt = 15;//暫定
+
     const tytle = {
       "friend0": "やぁ久しぶり<span class='from'>from:your-friend</span>",
       "friend1": "面白い事があったんだ<span class='from'>from:your-friend</span>",
-      "am": "ご注文承りました<span class='from'>from:online-market</span>"
+      "friend2": "そういえば<span class='from'>from:your-friend</span>",
+      "am": "ご注文承りました<span class='from'>from:online-market</span>",
     }
-
 
 
 
@@ -212,8 +208,13 @@
       if (!mails) { mails = "" }
       mails = mails.split(',')
       let i = 0
+      let friendMail ={};
       for (mail of mails) {
         if (!mail) { continue; }
+        if (!(mail =="am")){
+          if (friendMail[mail]) { continue; }
+          friendMail[mail] = true;
+        }
         i++
         const tytleObj = `<div class="mailTytle" id="mail${i}" targetId=sectionMail${i}>${tytle[mail]}</div>`
         const bodyObj = `<object class="mailBody" id="sectionMail${i}" data="${mail}.html" type="text/html">`
@@ -324,7 +325,7 @@
                 <div class="img">
                   <img src="assets/images/onmyojikun.png" alt="太郎">
                 </div>
-                <div class="comment">
+                <div class="comment"><br>
                   太郎<br>
                   平安京から通話を繋げてきた少年。陰陽師。<br>
                   画面の向こうが遠い未来であるとは想像すらしていない様子。
@@ -336,7 +337,7 @@
                 <div class="img">
                   <img src="assets/images/mob.png" alt="陰陽師">
                 </div>
-                <div class="comment">
+                <div class="comment"><br>
                   世界征服を企む悪い陰陽師<br>
                   早くスマホを封印しないと、こいつらが襲ってくる。<br>
                   陰陽師は皆スマホの位置を把握できるが、太郎によって認識阻害されている。
@@ -348,17 +349,44 @@
                 <div class="img">
                   <img src="assets/images/kanrinin.png" alt="管理人">
                 </div>
-                <div class="comment">
+                <div class="comment"><br>
                   大内裏の管理人<br>
                   主に大内裏の出入りを管理している。<br>
                   乱暴な言葉遣いとは裏腹に、市民からの評判は良い。
                 </div>
               </div>
             </div>
+          <div id="person4">
+              <div class="person">
+                <div class="img">
+                  <img src="assets/images/musume.png" alt="一人娘">
+                </div>
+                <div class="comment"><br>
+                  天皇の一人娘<br>
+                  数年前から異形化していたが、天皇によって宝物殿地下に匿われていた。<br>
+                  その数年間は人と会話していないため、喋り方はやや拙い。
+                </div>
+              </div>
+            </div>
+            <div id="person5">
+              <div class="person">
+                <div class="img">
+                  <img src="assets/images/.png" alt="天皇">
+                </div>
+                <div class="comment"><br>
+                  天皇<br>
+                  言わずと知れた平安京のトップ。<br>
+                  割とお茶目で人当たりも良い。記憶力には自信がない為、大切な物は暗号などで場所を記録している。<br>
+                  イラストまであるのに本編に登場できなかったかわいそうな人。
+                </div>
+              </div>
+            </div>
+            <div id="person6">
+              <div style="font-size: 5em;">Thanks For Praying !</div>
+            </div>
 
 
           </div>
-
         </section>
         <section class="content" id="section2">
           <div style="height: 100%;">
@@ -366,26 +394,25 @@
               ゲーム中に入手したアイテムや情報が保管されています。<br>
               画像はクリックで拡大表示できます。
             </div>
+            
             <div id="item1">
               <div class="item">
                 <div class="img">
                   <img src="assets/images/nazo1-1.png" alt="謎1_1">
                 </div>
-                <div class="comment">
+                <div class="comment"><br>
                   大内裏の地図<br>
                   太郎が持っていた地図に、必要な情報を書き込んだもの。<br>
                   宝物殿への行き方は、太郎によって4つに絞られた。
                 </div>
               </div>
             </div>
-
-
             <div id="item2">
               <div class="item">
                 <div class="img">
                   <img src="assets/images/nazo1-2.png" alt="謎1_2">
                 </div>
-                <div class="comment">
+                <div class="comment"><br>
                   大内裏の警備地図<br>
                   大内裏入り口事務所内で激写。<br>
                   管理人は、まさか情報が盗まれているとは思っていないだろう。
@@ -397,7 +424,7 @@
                 <div class="img">
                   <img src="assets/images/kinko.png" alt="封印の箱">
                 </div>
-                <div class="comment">
+                <div class="comment"><br>
                   封印の箱<br>
                   スマホを封印することができる不思議な箱。<br>
                   鍵が掛かっており、1枚の紙が貼ってある。<br>
@@ -410,7 +437,7 @@
                 <div class="img">
                   <img src="assets/images/nazo2-0.png" alt="謎2_0">
                 </div>
-                <div class="comment">
+                <div class="comment"><br>
                   謎紙<br>
                   封印の箱に貼ってあったもの。<br>
                   縦に4マスが並んでいる。
@@ -422,7 +449,7 @@
                 <div class="img">
                   <img src="assets/images/nazo2-1.png" alt="謎2_1">
                 </div>
-                <div class="comment">
+                <div class="comment"><br>
                   謎紙　1マス目
                 </div>
               </div>
@@ -432,7 +459,7 @@
                 <div class="img">
                   <img src="assets/images/nazo2-2.png" alt="謎2_2">
                 </div>
-                <div class="comment">
+                <div class="comment"><br>
                   謎紙　2マス目
                 </div>
               </div>
@@ -442,7 +469,7 @@
                 <div class="img">
                   <img src="assets/images/nazo2-3.png" alt="謎2_3">
                 </div>
-                <div class="comment">
+                <div class="comment"><br>
                   謎紙　3マス目
                 </div>
               </div>
@@ -452,7 +479,7 @@
                 <div class="img">
                   <img src="assets/images/nazo2-4.png" alt="謎2_4">
                 </div>
-                <div class="comment">
+                <div class="comment"><br>
                   謎紙　4マス目
                 </div>
               </div>
@@ -462,34 +489,93 @@
                 <div class="img">
                   <img src="assets/images/kagihakken.png" alt="封印の箱の鍵">
                 </div>
-                <div class="comment">
+                <div class="comment"><br>
                   封印の箱の鍵<br>
                   押し入れの奥に隠してあった。<br>
                   こんな管理で大丈夫なのか。
                 </div>
               </div>
             </div>
+            <div id="item10">
+              <div class="item">
+                <div class="img">
+                  <img src="assets/images/akikinkomonoari.png" alt="封印の箱の中身">
+                </div>
+                <div class="comment"><br>
+                  封印の箱の中身<br>
+                  天皇の愛娘溺愛日記、「地下室入り口」と書かれた紙、地下室の鍵、の3つが入っていた。<br>
+                </div>
+              </div>
+            </div>
+            <div id="item11">
+              <div class="item">
+                <div class="img">
+                  <img src="assets/images/nikki.png" alt="天皇の愛娘溺愛日記">
+                </div>
+                <div class="comment"><br>
+                  封印の箱の中身その1<br>
+                  天皇の愛娘溺愛日記。<br>
+                  生まれた直後からの一人娘の成長が、厳つい文字でびっしり書かれている。<br>
+                  途中まではただの子煩悩日誌だったものの、数年前に、行方不明になったとの記述がある。<br>
+                  その数ヶ月後、「あの子は、『結果』などではない。人間だ。」の記述を最後に、<br>
+                  それ以降は真っ白である。
+                </div>
+              </div>
+            </div>
+            <div id="item12">
+              <div class="item">
+                <div class="img">
+                  <img src="assets/images/nazo3.png" alt="謎3">
+                </div>
+                <div class="comment"><br>
+                  封印の箱の中身その2<br>
+                </div>
+              </div>
+            </div>
+            <div id="item13">
+              <div class="item">
+                <div class="img">
+                  <img src="assets/images/chikakagi.png" alt="地下室の鍵">
+                </div>
+                <div class="comment"><br>
+                  封印の箱の中身その3<br>
+                  地下室の鍵。長い間使われていないように見える。
+                </div>
+              </div>
+            </div>
+            <div id="item14">
+              <div class="item">
+                <div class="img">
+                  <img src="assets/images/chikakagi.png" alt="スマホ">
+                </div>
+                <div class="comment"><br>
+                  平安京にお届けされたスマホ。<br>
+                  機種名は『nPhone 21 Pro』<br>
+                  きっとパチモン。
+                </div>
+              </div>
+            </div>
+            <div id="item15">
+              <div style="font-size: 5em;">Thanks For Praying !</div>
+            </div>
 
+            
+          </div>
+        </section>
+        <section class="content" id="section3">
+          <div style="border-bottom: 2px solid rgb(0, 0, 0);height: 8%;">
+            届いたメールが保管されています。<br>
 
-
-
-
-        </div>
-      </section>
-      <section class="content" id="section3">
-        <div style="border-bottom: 2px solid rgb(0, 0, 0);height: 8%;">
-          届いたメールが保管されています。<br>
-
-        </div>
-        <div style="display: flex;height: 89%;">
-          <section id="mailList">
-          </section>
-          <section id="mail">
-          </section>
-        </div>
-      </section>
-    </main>
-  </div>
+          </div>
+          <div style="display: flex;height: 89%;">
+            <section id="mailList">
+            </section>
+            <section id="mail">
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
   </section>
 </body>
 
