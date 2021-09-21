@@ -25,6 +25,15 @@ const app = Vue.createApp({
         },
         stage3: {
           q1: 'おしいれ',
+        },    
+        stage4: {
+          q1: 'しない',
+        },
+        stage5: {
+          q1: 'ゆかした',
+        },
+        stage6: {
+          q1: 'おんな',
         },
       },
 
@@ -36,20 +45,23 @@ const app = Vue.createApp({
           false,
         ],
         stage2: [
-          false, // 2-1
-          // false, // 2-2
-          // false, // 2-3
+          false,
         ],
         stage3: [
-          false, // 3-1
-          // false, // 3-2
-          // false, // 3-3
-        ],
+          false,
+        ],  
         stage4: [
-          false, // 3-1
-          // false, // 3-2
-          // false, // 3-3
-        ]
+          false,
+        ],
+        stage5: [
+          false,
+        ],
+        stage6: [
+          false,
+        ],
+        stage7: [
+          false,
+        ],
       },
 
       /* ステージの問題が全て正解かどうか */
@@ -58,6 +70,9 @@ const app = Vue.createApp({
         stage2: false,
         stage3: false,
         stage4: false,
+        stage5: false,
+        stage6: false,
+        stage7: false,
       },
 
       /* 次のステージを表示するかどうか
@@ -67,6 +82,9 @@ const app = Vue.createApp({
         stage1: false,
         stage2: false,
         stage3: false,
+        stage4: false,
+        stage5: false,
+        stage6: false,
       },
     }
   },
@@ -95,7 +113,9 @@ const app = Vue.createApp({
       /* 最終ステージの入力を判定します。 */
       if ( this.clear[stage] === true && final === 'final' ) {
         this.setStorage("isFinished",true)
-        
+        if(this.getStorage("stage") == 1){
+          this.setStorage("stage",2)
+        }
         window.opener.vm.nextFinish()
         
       }
@@ -199,4 +219,7 @@ function onNewPage(){
 }
 function badEnd(){
   window.opener.vm.badEnd()
+}
+function normalEnd(){
+  window.opener.vm.normalEnd()
 }
