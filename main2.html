@@ -488,7 +488,7 @@
                     <div style="flex: 1;"></div>
                   </div>
                 </div>
-                <button v-on:click="nextStage('stage2');getItem('person',3);" onclick="location.href='#sectionStage3'"
+                <button v-on:click="nextStage('stage2');" onclick="location.href='#sectionStage3'"
                   class="clear-message__btn btn">次のステージへ<svg class="btn__arrow">
                     <use xlink:href="#arrow"></use>
                   </svg></button>
@@ -714,7 +714,7 @@
                     <div style="flex: 1;"></div>
                   </div>
                 </div>
-                <button v-on:click="nextStage('stage4');getItem('person',2);" onclick="location.href='#sectionStage5'"
+                <button v-on:click="nextStage('stage4');" onclick="location.href='#sectionStage5'"
                   class="clear-message__btn btn">次のステージへ<svg class="btn__arrow">
                     <use xlink:href="#arrow"></use>
                   </svg></button>
@@ -853,12 +853,12 @@
                     <br>
                     <br>そうえいば、封印の箱に元から入っていた物がありましたね。
                     <br>封印できる嬉しさに、すっかり忘れてました…！
-                    <br>なにか手がかりにならないでしょうか……。
+                    <br>なにか手がかりにならないでしょうか……？
                   </div>」
                   <br>
                   <br>
                   <button class="itemButton" id="itemButton3" v-on:click="getItem('item',8,true)"
-                    onclick="document.getElementById('itemHide3').style.display = 'block';document.getElementById('itemButton2').style.display = 'none';">アイテム入手</button><br>
+                    onclick="document.getElementById('itemHide3').style.display = 'block';document.getElementById('itemButton3').style.display = 'none';">アイテム入手</button><br>
                   <br>
                   <br>
                 </div>
@@ -870,7 +870,16 @@
                   <div class="storyContainer">
                     <br>
                     <br>
-                    <br>・鍵
+                    <br>
+                    <div style="display:flex;">
+                      <figure class="image__container" style="flex: 5;">
+                        <img class="img" src="assets/images/nikki.png">
+                      </figure>
+                      <div style="flex: 1;"></div>
+                      <figure class="image__container" style="flex: 5;">
+                        <img class="img" src="assets/images/chikakagi.png">
+                      </figure>
+                    </div>
                     <br>
                     <br>
                     <figure class="image__container" style="margin: auto;">
@@ -878,14 +887,14 @@
                     </figure>
                     <br>
                     <br>
-                    <br>・愛娘成長記録　著：天皇
+                    <br>鍵と、日記と、謎の紙。
+                    <br>鍵には手書きで「地下室」と書いてある。
                     <br>
-                    <br>
-                    <br>内容追記
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+                    
+
+<!--追記予定跡地-->
+
+                    
                     <br>太郎「
                     <div class="p">あ、この『地下室入り口』って紙がそれっぽいですね！
                       <br>これ……どういう意味なんでしょうか…？
@@ -924,7 +933,7 @@
                     <div style="flex: 1;"></div>
                   </div>
                 </div>
-                <button v-on:click="nextStage('stage5');getItem('item',9);" onclick="location.href='#sectionStage6'"
+                <button v-on:click="nextStage('stage5');" onclick="location.href='#sectionStage6'"
                   class="clear-message__btn btn">次のステージへ<svg class="btn__arrow">
                     <use xlink:href="#arrow"></use>
                   </svg></button>
@@ -1136,7 +1145,7 @@
                     <div style="flex: 1;"></div>
                   </div>
                 </div>
-                <button v-on:click="nextStage('stage6');getItem('item',9);" onclick="location.href='#sectionStage7'"
+                <button v-on:click="nextStage('stage6');" onclick="location.href='#sectionStage7'"
                   class="clear-message__btn btn">次のステージへ<svg class="btn__arrow">
                     <use xlink:href="#arrow"></use>
                   </svg></button>
@@ -1558,6 +1567,19 @@
                   <br>
                   <br>太郎「僕は、平和のために、陰陽術を、使うんだー!!!」
                   <br>
+                  <br>
+                  <br>
+                  <button class="itemButton" id="itemButton4" v-on:click="getItem('person',4);"
+                  onclick="document.getElementById('itemHide4').style.display = 'block';document.getElementById('itemButton4').style.display = 'none';">進む</button><br>
+                <br>
+                <br>
+              </div>
+            </div>
+          </div>
+          <div id="itemHide4" style="display: none;">
+            <div class="section">
+              <div class="container">
+                <div class="storyContainer">
                   <br>空間が軋むような音がした。
                   <br>突如画面が真っ白になる。何も見えない。
                   <br>ただ声だけが聞こえる。
@@ -1635,7 +1657,7 @@
                     <br>テメェが言ってた過激派陰陽師ってのが大内裏に入ってきやがった！止めようとしたけど、ありゃあムリだぜ強すぎる！あと少しでここまで来るぞ早く逃げろっ！
                   
                   
-                    ＜追記＞
+<!--追記予定跡地-->
                   
                   
                     <br>あ、嬢ちゃんお久しぶりです。よくやった！
@@ -1829,15 +1851,17 @@
                   <br>
                   <br>
                   <br>
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
-          <section class="section bg-color--keycolor">
-            <div class="container">
-              <div class="answer__container">
-                <button v-on:click="answerInput($event, 'stage7', 1, 'final')">通話を終了</button>
-              </div>
+              <section class="section bg-color--keycolor">
+                <div class="container">
+                  <div class="answer__container">
+                    <button
+                      v-on:click="answerInput($event, 'stage7', 1, 'final');getItem('person',6);getItem('item',15);">通話を終了</button>
+                  </div>
+                </div>
+              </section>
             </div>
           </section>
         </div>
