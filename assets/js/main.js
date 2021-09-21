@@ -131,9 +131,11 @@ const app = Vue.createApp({
       setTimeout(onNewPage,100)
       
     },
-    getItem(type,n){
+    getItem(type,n,al){
       this.setStorage(type,n)
-      window.alert("アイテムを入手！情報管理ウィンドウで確認できるようになった。")
+      if(al){
+        window.alert("アイテムを入手！情報管理ウィンドウで確認できるようになった。")
+      }
     },
   }
 })
