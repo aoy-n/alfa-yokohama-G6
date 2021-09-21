@@ -524,6 +524,12 @@ button {
   background-color: #fff;
 }
 
+.heianbox {
+  border: 2px inset rgb(0, 0, 0);
+  padding: 1.5em;
+  background-color: rgb(240, 210, 160);
+}
+
 .br {
   border: 1px solid rgb(0, 0, 0);
 }
