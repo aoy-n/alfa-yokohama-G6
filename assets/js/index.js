@@ -103,8 +103,6 @@ const app = Vue.createApp({
       if (this.getStorage("ordered") == "true") {
         this.closeTab("market");
         this.hideStage("stage1");
-        this.st = this.getStorage("stage")
-        if (!this.st) { this.setStorage("stage", 1); this.st = 1 };
         if (this.st == 2) {
           this.nextStage("stage2.5");
         } else {
@@ -133,6 +131,9 @@ window.addEventListener('beforeunload', def);
 window.addEventListener('unload', vm.allClose, false);
 
 window.addEventListener('load', function () {
+  vm.st = vm.getStorage("stage")
+  if (!vm.st) { vm.setStorage("stage", 1); vm.st = 1 };
+  
   if (vm.getStorage("ordered") == "true") {
     vm.hideStage("stage1");
     if (vm.st == 2) {
