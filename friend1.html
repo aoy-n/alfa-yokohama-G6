@@ -1,17 +1,43 @@
+<head>
+  <style>
+  .img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  </style>
+  <script>
+  window.addEventListener('load', function() { 
+    const elements = document.getElementsByClassName("image__container");
+    for (el of elements) {
+      el.addEventListener("click", {
+        handleEvent: showImg,
+      });
+    };
+  });
+  function showImg(e) {
+    const img = e.currentTarget.childNodes[0]
+    window.open(img.src, '_blank')
+  }
+
+  </script>
+</head>
 <body style="font-size: 1.5em; line-height: 1.7em; padding-left: 1em;">
 <br>じゃあ話してみようかな。
 <br>
-<br>ついこの間の話なんだけどね。
-<br>いつものように、通販しようとしたんだ。
-<br>途中までは何の変哲も無かったんだけどね。
-<br>いざ商品を注文しようと、色々な情報を入力しようとしていた時、
-<br>「お届け先」の選択項目が、全部同じになってたんだよ。
-<br>その1つしかない「お届け先」がまた、面白くてさ。
-<br>聞いて驚け、【平城京】さ。
-<br> 【奈良時代】 の都だよ。信じられないね。
-<br>だけど。面白かったから。
-<br>ついつい注文しちゃったんだ。
-<br>何をか、って？
+<br>古ーい倉から出てきたその書物、年代鑑定したら、
+<br>なんと【平安時代】の頃に作られたものらしいんだ。
+<br>鑑定士さんも、こんな古いのがよく残ってたなーって感心してたよ。
 <br>
-<br>【金庫】 だよ。
+<br>内容は、何かの告発文みたいだよ。昔はこういう偉い人の告発とか、よくあったらしいね。
+<br>
+<br>で、ここからが面白い所。
+<br>
+<br>その文章が、なんと暗号で書かれてるんだよ。
+<br>昔の人が遺した暗号。ワクワクするじゃないか！
+<br>
+<br>ただ、解くのに必要な「鍵」が分からなくて、どうにも解けないんだよ。
+<br>君も挑戦してみないかい？こういうの好きだっただろう？
+<br>
+<figure class="image__container" style="margin: auto;"><img class="img" src="assets/images/nazo4.png"></figure>
 </body>
