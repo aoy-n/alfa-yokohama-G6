@@ -105,10 +105,10 @@ const app = Vue.createApp({
         this.hideStage("stage1");
         this.st = this.getStorage("stage")
         if (!this.st) { this.setStorage("stage", 1); this.st = 1 };
-        if (this.st == 1) {
-          this.nextStage("stage2");
-        } else {
+        if (this.st == 2) {
           this.nextStage("stage2.5");
+        } else {
+          this.nextStage("stage2");
         }
       }
     },
@@ -135,7 +135,11 @@ window.addEventListener('unload', vm.allClose, false);
 window.addEventListener('load', function () {
   if (vm.getStorage("ordered") == "true") {
     vm.hideStage("stage1");
-    vm.nextStage("stage2");
+    if (vm.st == 2) {
+      vm.nextStage("stage2.5");
+    } else {
+      vm.nextStage("stage2");
+    }
   }
   document.getElementById('loading').style.display = 'none';
   document.getElementById('loaded').style.display = 'block';
